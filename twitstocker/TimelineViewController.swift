@@ -11,6 +11,7 @@ import UIKit
 import TwitterKit
 
 class TimelineViewController: UIViewController {
+    
     var tableView: UITableView!
     var tweets: [TWTRTweet] = [] {
         didSet {
@@ -37,7 +38,7 @@ class TimelineViewController: UIViewController {
     }
     
     func loadTweets() {
-        TwitterAPI.getHomeTimeline({
+        TwitterAPI.getUserTimeline(Twitter.sharedInstance().session().userName, {
             twttrs in
             for tweet in twttrs {
                 self.tweets.append(tweet)

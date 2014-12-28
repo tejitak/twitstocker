@@ -8,11 +8,13 @@
 
 import Foundation
 import UIKit
+import TwitterKit
 
 class MainTabViewController: UITabBarController {
     
     var firstView: TimelineViewController!
     var secondView: FavoriteViewController!
+    var session: TWTRSession!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +25,10 @@ class MainTabViewController: UITabBarController {
         firstView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 1)
         secondView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Bookmarks, tag: 2)
         
-        var navigationController = UINavigationController(rootViewController: firstView);
+        var firstNavigationController = UINavigationController(rootViewController: firstView)
+        var secondNavigationController = UINavigationController(rootViewController: secondView)
         
-        self.setViewControllers([navigationController, secondView!], animated: false)
+        self.setViewControllers([firstNavigationController, secondNavigationController], animated: false)
     }
     
     override func didReceiveMemoryWarning() {

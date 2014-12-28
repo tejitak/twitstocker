@@ -33,6 +33,40 @@ class TwitterAPI {
         })
     }
     
+    class func getUserTimeline(userName: String, tweets: [TWTRTweet]->(), error: (NSError) -> ()) {
+        self.callAPI("/statuses/user_timeline.json", parameters: ["screen_name": userName], {
+            response, data, err in
+            if err == nil {
+                var jsonError: NSError?
+                let json: AnyObject? =  NSJSONSerialization.JSONObjectWithData(data,
+                    options: nil,
+                    error: &jsonError)
+                if let jsonArray = json as? NSArray {
+                    tweets(TWTRTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
+                }
+            } else {
+                error(err)
+            }
+        })
+    }
+    
+    class func listMyFavorites(tweets: [TWTRTweet]->(), error: (NSError) -> ()) {
+        self.callAPI("/favorites/list.json", parameters: nil, {
+            response, data, err in
+            if err == nil {
+                var jsonError: NSError?
+                let json: AnyObject? =  NSJSONSerialization.JSONObjectWithData(data,
+                    options: nil,
+                    error: &jsonError)
+                if let jsonArray = json as? NSArray {
+                    tweets(TWTRTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
+                }
+            } else {
+                error(err)
+            }
+        })
+    }
+    
     class func callAPI(path: String, parameters: [NSObject : AnyObject]!, completion: TWTRNetworkCompletion!){
         let api = TwitterAPI()
         var clientError: NSError?
