@@ -23,7 +23,6 @@ class MainTabViewController: UITabBarController {
         firstView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 1)
         secondView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Bookmarks, tag: 2)
         
-        
         var navigationController = UINavigationController(rootViewController: firstView);
         
         self.setViewControllers([navigationController, secondView!], animated: false)

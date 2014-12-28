@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import TwitterKit
 
-class TimelineViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TimelineViewController: UIViewController {
     var tableView: UITableView!
     var tweets: [TWTRTweet] = [] {
         didSet {
@@ -47,10 +47,10 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
                 println(error.localizedDescription)
         })
     }
-    
-    // MARK: UITableViewDataSource
+}
+
+extension TimelineViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of Tweets.
         return tweets.count
     }
     
@@ -62,8 +62,9 @@ class TimelineViewController: UIViewController, UITableViewDataSource, UITableVi
         
         return cell
     }
-    
-    // MARK: UITableViewDelegate
+}
+
+extension TimelineViewController : UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         let tweet = tweets[indexPath.row]
         

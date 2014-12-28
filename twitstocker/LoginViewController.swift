@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
             (session: TWTRSession!, error: NSError!) in
             if session != nil {
                 UIApplication.sharedApplication().keyWindow?.rootViewController = MainTabViewController()
-//                UIApplication.sharedApplication().keyWindow?.rootViewController = TimelineViewController()
             } else {
                 println(error.localizedDescription)
             }

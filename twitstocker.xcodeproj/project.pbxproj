@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		001AAF6E1A4FE466004EB54E /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */; };
+		001AAF701A4FF4FE004EB54E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */; };
 		009D1E311A4F9EE5007C28C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */; };
 		009D1E351A4F9EE5007C28C7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E341A4F9EE5007C28C7 /* FavoriteViewController.swift */; };
 		009D1E3A1A4F9EE5007C28C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 009D1E391A4F9EE5007C28C7 /* Images.xcassets */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
+		001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		009D1E2B1A4F9EE5007C28C7 /* twitstocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitstocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		009D1E2F1A4F9EE5007C28C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		009D1E221A4F9EE4007C28C7 = {
 			isa = PBXGroup;
 			children = (
+				001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */,
 				009D1E531A4FA182007C28C7 /* TwitterKit.framework */,
 				009D1E541A4FA182007C28C7 /* TwitterKitResources.bundle */,
 				009D1E551A4FA182007C28C7 /* Fabric.framework */,
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				009D1E571A4FA182007C28C7 /* TwitterKitResources.bundle in Resources */,
+				001AAF701A4FF4FE004EB54E /* Default-568h@2x.png in Resources */,
 				009D1E3D1A4F9EE5007C28C7 /* LaunchScreen.xib in Resources */,
 				009D1E3A1A4F9EE5007C28C7 /* Images.xcassets in Resources */,
 			);
