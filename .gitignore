@@ -1,0 +1,5 @@
+.DS_Store
+Fabric.framework/
+TwitterKit.framework/
+twitstocker.xcodeproj/
+Info.plist
