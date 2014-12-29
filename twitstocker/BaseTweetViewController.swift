@@ -45,10 +45,9 @@ extension BaseTweetViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as TWTRTweetTableViewCell
-        
         let tweet = tweets[indexPath.row]
+        cell.tag = indexPath.row
         cell.configureWithTweet(tweet)
-        
         return cell
     }
 }

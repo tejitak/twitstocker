@@ -22,8 +22,7 @@ class FavoriteViewController: BaseTweetViewController {
         tableView.registerClass(TWTRTweetTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
 
-//        loadTweets({() -> () in }, errcb: {() -> () in })
-        refresh()
+        loadMyFavorites({() -> () in }, errcb: {() -> () in })
     }
     
     override func refresh() {
