@@ -34,14 +34,18 @@ class TwitterAPI {
     }
     
     class func getUserTimeline(userName: String, tweets: [TWTRTweet]->(), error: (NSError) -> ()) {
-        self.callAPI("/statuses/user_timeline.json", parameters: ["screen_name": userName], {
+//        self.callAPI("/statuses/user_timeline.json", parameters: ["screen_name": userName], {
+        self.callAPI("/search/tweets.json", parameters: ["q": "filter:links+-filter:images+from:" + userName, "result_type": "recent", "count": "30"], {
             response, data, err in
             if err == nil {
                 var jsonError: NSError?
-                let json: AnyObject? =  NSJSONSerialization.JSONObjectWithData(data,
+                var list: AnyObject? =  NSJSONSerialization.JSONObjectWithData(data,
                     options: nil,
                     error: &jsonError)
-                if let jsonArray = json as? NSArray {
+                if let dic = list as? NSDictionary {
+                    list = dic["statuses"]
+                }
+                if let jsonArray = list as? NSArray {
                     tweets(TWTRTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
                 }
             } else {

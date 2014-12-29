@@ -20,6 +20,8 @@
 		009D1E5A1A4FA1D8007C28C7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E591A4FA1D8007C28C7 /* LoginViewController.swift */; };
 		009D1E5C1A4FA23F007C28C7 /* TwitterAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E5B1A4FA23F007C28C7 /* TwitterAPI.swift */; };
 		009D1E5E1A4FA257007C28C7 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E5D1A4FA257007C28C7 /* TimelineViewController.swift */; };
+		00A36E931A50339800B15D10 /* BaseTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36E921A50339800B15D10 /* BaseTweetViewController.swift */; };
+		00A36E951A50358400B15D10 /* StockedTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +52,8 @@
 		009D1E591A4FA1D8007C28C7 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		009D1E5B1A4FA23F007C28C7 /* TwitterAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterAPI.swift; sourceTree = "<group>"; };
 		009D1E5D1A4FA257007C28C7 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
+		00A36E921A50339800B15D10 /* BaseTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTweetViewController.swift; sourceTree = "<group>"; };
+		00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockedTweetTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +110,8 @@
 				009D1E5B1A4FA23F007C28C7 /* TwitterAPI.swift */,
 				009D1E5D1A4FA257007C28C7 /* TimelineViewController.swift */,
 				001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */,
+				00A36E921A50339800B15D10 /* BaseTweetViewController.swift */,
+				00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */,
 			);
 			path = twitstocker;
 			sourceTree = "<group>";
@@ -256,8 +262,10 @@
 				009D1E5A1A4FA1D8007C28C7 /* LoginViewController.swift in Sources */,
 				009D1E351A4F9EE5007C28C7 /* FavoriteViewController.swift in Sources */,
 				009D1E311A4F9EE5007C28C7 /* AppDelegate.swift in Sources */,
+				00A36E931A50339800B15D10 /* BaseTweetViewController.swift in Sources */,
 				009D1E5C1A4FA23F007C28C7 /* TwitterAPI.swift in Sources */,
 				001AAF6E1A4FE466004EB54E /* MainTabViewController.swift in Sources */,
+				00A36E951A50358400B15D10 /* StockedTweetTableViewCell.swift in Sources */,
 				009D1E5E1A4FA257007C28C7 /* TimelineViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
