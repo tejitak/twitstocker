@@ -13,11 +13,7 @@ import TwitterKit
 class BaseTweetViewController: UIViewController {
     
     var tableView: UITableView!
-    var tweets: [TWTRTweet] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    var tweets: [TWTRTweet] = []
     var prototypeCell: TWTRTweetTableViewCell?
     var refreshControl:UIRefreshControl!
     
@@ -32,9 +28,19 @@ class BaseTweetViewController: UIViewController {
         refreshControl.attributedTitle = NSAttributedString(string: "refresh")
         refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
         tableView.addSubview(refreshControl)
+        
+        // nav right item button
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Setting", style: .Plain, target: self, action: "onClickSetting")
     }
     
+    // for override
     func refresh() {
+    }
+    
+    func onClickSetting() {
+        let modalView = SettingViewController()
+        modalView.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
+        self.presentViewController(modalView, animated: true, completion: nil)
     }
 }
 

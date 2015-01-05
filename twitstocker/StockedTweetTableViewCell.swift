@@ -55,7 +55,9 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
             let size   = self.contentView.frame.size
             let origin = self.contentView.frame.origin
             self.contentView.frame = CGRect(x: origin.x - 100, y:origin.y, width:size.width, height:size.height)
-            self.delegate?.removeTweet?(self.tag)
+            if origin.x == 0 {
+                self.delegate?.removeTweet?(self.tag)
+            }
             }) { completed in }
     }
     
@@ -67,10 +69,6 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
             if origin.x == 0 {
                 self.delegate?.favoriteTweet?(self.tag)
             }
-            }) { completed in
-//                let size   = self.contentView.frame.size
-//                let origin = self.contentView.frame.origin
-//                self.contentView.frame = CGRect(x: origin.x - 100, y:origin.y, width:size.width, height:size.height)
-        }
+            }) { completed in }
     }
 }

@@ -16,8 +16,7 @@ class LoginViewController: UIViewController {
         let logInButton = TWTRLogInButton(logInCompletion: {
             (session: TWTRSession!, error: NSError!) in
             if session != nil {
-                let mainViewController = MainTabViewController()
-                UIApplication.sharedApplication().keyWindow?.rootViewController = mainViewController
+                UIApplication.sharedApplication().keyWindow?.rootViewController = MainTabViewController()
             } else {
                 println(error.localizedDescription)
             }

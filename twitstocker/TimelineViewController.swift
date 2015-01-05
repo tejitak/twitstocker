@@ -24,7 +24,8 @@ class TimelineViewController: BaseTweetViewController {
         tableView.registerClass(StockedTweetTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
         
-        loadTweets({() -> () in }, errcb: {() -> () in })
+//        loadTweets({() -> () in }, errcb: {() -> () in })
+        refresh()
     }
     
     override func refresh() {
@@ -42,6 +43,7 @@ class TimelineViewController: BaseTweetViewController {
             for tweet in twttrs {
                 self.tweets.append(tweet)
             }
+            self.tableView.reloadData()
             }, error: {
                 error in
                 println(error.localizedDescription)

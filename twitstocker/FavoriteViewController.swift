@@ -22,7 +22,8 @@ class FavoriteViewController: BaseTweetViewController {
         tableView.registerClass(TWTRTweetTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
 
-        loadMyFavorites({() -> () in }, errcb: {() -> () in })
+//        loadMyFavorites({() -> () in }, errcb: {() -> () in })
+        refresh()
     }
     
     override func refresh() {
@@ -40,6 +41,7 @@ class FavoriteViewController: BaseTweetViewController {
             for tweet in twttrs {
                 self.tweets.append(tweet)
             }
+            self.tableView.reloadData()
             }, error: {
                 error in
                 println(error.localizedDescription)
