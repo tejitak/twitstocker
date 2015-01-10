@@ -16,6 +16,8 @@ class BaseTweetViewController: UIViewController {
     var tweets: [TWTRTweet] = []
     var prototypeCell: TWTRTweetTableViewCell?
     var refreshControl:UIRefreshControl!
+    var maxIdStr:String = ""
+    var count:Int = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +35,18 @@ class BaseTweetViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Setting", style: .Plain, target: self, action: "onClickSetting")
     }
     
-    // for override
     func refresh() {
+        // clear existing tweets
+        self.tweets = []
+        self.maxIdStr = ""
+        loadMore({() -> () in
+            self.refreshControl.endRefreshing()
+            }, errcb: {() -> () in self.refreshControl.endRefreshing()}
+        )
+    }
+    
+    // for override
+    func loadMore(cb: ()->(), errcb: () -> ()) {
     }
     
     func onClickSetting() {
@@ -54,6 +66,10 @@ extension BaseTweetViewController : UITableViewDataSource {
         let tweet = tweets[indexPath.row]
         cell.tag = indexPath.row
         cell.configureWithTweet(tweet)
+        // load more data by showing a last table cell
+        if (tweets.count - 1) == indexPath.row && self.maxIdStr != "" {
+            self.loadMore({() -> () in }, errcb: {() -> () in })
+        }
         return cell
     }
 }

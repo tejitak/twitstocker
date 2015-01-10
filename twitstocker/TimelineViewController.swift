@@ -24,24 +24,24 @@ class TimelineViewController: BaseTweetViewController {
         tableView.registerClass(StockedTweetTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
         
-//        loadTweets({() -> () in }, errcb: {() -> () in })
         refresh()
     }
     
-    override func refresh() {
-        loadTweets({() -> () in
-            // clear existing tweets
-            self.tweets = []
-            self.refreshControl.endRefreshing()
-        }, errcb: {() -> () in self.refreshControl.endRefreshing()})
-    }
-    
-    func loadTweets(cb: ()->(), errcb: () -> ()) {
-        TwitterAPI.getUserTimeline(Twitter.sharedInstance().session().userName, {
+    override func loadMore(cb: ()->(), errcb: () -> ()) {
+        var params = ["q": "filter:links+-filter:images+from:" + Twitter.sharedInstance().session().userName, "result_type": "recent", "count": String(self.count)]
+        if self.maxIdStr != "" {
+            params["max_id"] = self.maxIdStr
+        }
+        TwitterAPI.search(params, tweets: {
             twttrs in
             cb()
             for tweet in twttrs {
                 self.tweets.append(tweet)
+                self.maxIdStr = tweet.tweetID
+            }
+            // end of all pages
+            if twttrs.count < self.count {
+                self.maxIdStr = ""
             }
             self.tableView.reloadData()
             }, error: {
@@ -74,11 +74,8 @@ extension TimelineViewController: StockedTableViewCellDelegate {
 
 extension TimelineViewController : UITableViewDataSource {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as StockedTweetTableViewCell
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath) as StockedTweetTableViewCell
         cell.delegate = self
-        let tweet = tweets[indexPath.row]
-        cell.tag = indexPath.row
-        cell.configureWithTweet(tweet)
         return cell
     }
 }
