@@ -17,6 +17,7 @@ class BaseTweetViewController: UIViewController {
     var prototypeCell: TWTRTweetTableViewCell?
     var refreshControl:UIRefreshControl!
     var maxIdStr:String = ""
+    var needReload:Bool = false
     
     let count:Int = 10
     // if search hash tag is empty, filter with tweets including URL
@@ -50,12 +51,20 @@ class BaseTweetViewController: UIViewController {
         )
     }
     
+    override func viewDidAppear(animated: Bool) {
+        if needReload == true {
+            refresh()
+            needReload = false
+        }
+    }
+
     // for override
     func loadMore(cb: ()->(), errcb: () -> ()) {
     }
     
     func onClickSetting() {
-        let modalView = SettingViewController()
+        let settingViewCtrl = SettingViewController()
+        let modalView = UINavigationController(rootViewController: settingViewCtrl)
         modalView.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
         self.presentViewController(modalView, animated: true, completion: nil)
     }

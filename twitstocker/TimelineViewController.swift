@@ -49,7 +49,7 @@ class TimelineViewController: BaseTweetViewController {
                     continue
                 }
                 // exclude stored ids already read
-                if ReadStore.sharedInstance.existsInStoredData(tweet.tweetID) {
+                if ReadStore.sharedInstance.getStoredData(tweet.tweetID) != nil {
                     continue
                 }
                 self.tweets.append(tweet)
@@ -73,13 +73,13 @@ extension TimelineViewController: StockedTableViewCellDelegate {
         let index: Int = cell.tag
         // show confirmation
         self.alert = UIAlertController(title: "お気に入りしますか？", message: nil, preferredStyle: .Alert)
-        self.alert!.addAction(UIAlertAction(title: "お気に入り", style: .Destructive) { action in
+        self.alert!.addAction(UIAlertAction(title: "OK", style: .Destructive) { action in
             // call favorite API
             var params = ["id": self.tweets[index].tweetID]
             TwitterAPI.favoriteTweet(params, success: {
                 twttrs in
                 self.alert = UIAlertController(title: "お気に入りしました", message: nil, preferredStyle: .Alert)
-                self.alert!.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
+                self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
                 self.presentViewController(self.alert!, animated: true, completion: nil)
                 // remove from view
                 var tweet = self.tweets[index]
@@ -92,12 +92,13 @@ extension TimelineViewController: StockedTableViewCellDelegate {
                 }, error: {
                     error in
                     println(error.localizedDescription)
-                    self.alert = UIAlertController(title: "Error", message: nil, preferredStyle: .Alert)
-                    self.alert!.addAction(UIAlertAction(title: "Close", style: .Cancel, handler: nil))
+                    cell.moveToLeft()
+                    self.alert = UIAlertController(title: "エラー", message: nil, preferredStyle: .Alert)
+                    self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
                     self.presentViewController(self.alert!, animated: true, completion: nil)
             })
         })
-        self.alert!.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { action in
+        self.alert!.addAction(UIAlertAction(title: "キャンセル", style: .Cancel) { action in
             cell.moveToLeft()
         })
         self.presentViewController(self.alert!, animated: true, completion: nil)
@@ -117,14 +118,14 @@ extension TimelineViewController: StockedTableViewCellDelegate {
     func readTweet(cell: StockedTweetTableViewCell) {
         let index: Int = cell.tag
         self.alert = UIAlertController(title: "既読にしますか？", message: nil, preferredStyle: .Alert)
-        self.alert!.addAction(UIAlertAction(title: "既読にする", style: .Destructive) { action in
+        self.alert!.addAction(UIAlertAction(title: "OK", style: .Destructive) { action in
             var tweet = self.tweets[index]
             // store to local storage
             ReadStore.sharedInstance.saveReadData(tweet.tweetID, createdAt: tweet.createdAt)
             self.tweets.removeAtIndex(index)
             self.tableView!.reloadData()
         })
-        self.alert!.addAction(UIAlertAction(title: "Cancel", style: .Cancel) { action in
+        self.alert!.addAction(UIAlertAction(title: "キャンセル", style: .Cancel) { action in
             cell.moveToRight()
         })
         self.presentViewController(self.alert!, animated: true, completion: nil)

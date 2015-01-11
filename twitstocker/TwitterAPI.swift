@@ -91,6 +91,18 @@ class TwitterAPI {
             }
         })
     }
+
+    class func unfavoriteTweet(params: [NSObject : AnyObject]!, success: ()->(), error: (NSError) -> ()) {
+        // params: id=xxxx
+        self.callPostAPI("/favorites/destroy.json", parameters: params, {
+            response, data, err in
+            if err == nil {
+                success()
+            } else {
+                error(err)
+            }
+        })
+    }
     
     class func deleteTweet(id: String, success: ()->(), error: (NSError) -> ()) {
         self.callPostAPI("/statuses/destroy/" + id + ".json", parameters: nil, {

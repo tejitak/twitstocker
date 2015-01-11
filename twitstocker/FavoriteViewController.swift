@@ -6,13 +6,14 @@
 //  Copyright (c) 2014年 Takuya Tejima. All rights reserved.
 //
 
-import UIKit
+import Foundation
 import UIKit
 import TwitterKit
 
 class FavoriteViewController: BaseTweetViewController {
     
-    var needReload:Bool = false
+    var alert : UIAlertController?
+    var onUnFavorite : (() -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,19 +22,12 @@ class FavoriteViewController: BaseTweetViewController {
         
         prototypeCell = TWTRTweetTableViewCell(style: .Default, reuseIdentifier: "cell")
         
-        tableView.registerClass(TWTRTweetTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.registerClass(FavoriteTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView)
 
         refresh()
     }
-    
-    override func viewDidAppear(animated: Bool) {
-        if needReload == true {
-            refresh()
-            needReload = false
-        }
-    }
-    
+        
     override func loadMore(cb: ()->(), errcb: () -> ()) {
         var params = ["count": String(self.count)]
         if self.maxIdStr != "" {
@@ -60,5 +54,52 @@ class FavoriteViewController: BaseTweetViewController {
                 println(error.localizedDescription)
                 errcb()
         })
+    }
+}
+
+extension FavoriteViewController: FavoriteTableViewCellDelegate {
+    func unfavoriteTweet(cell: FavoriteTableViewCell) {
+        let index: Int = cell.tag
+        // show confirmation
+        self.alert = UIAlertController(title: "お気に入りをやめますか？", message: nil, preferredStyle: .Alert)
+        self.alert!.addAction(UIAlertAction(title: "OK", style: .Destructive) { action in
+            // call favorite API
+            var params = ["id": self.tweets[index].tweetID]
+            TwitterAPI.unfavoriteTweet(params, success: {
+                twttrs in
+                self.alert = UIAlertController(title: "お気に入りをやめました", message: nil, preferredStyle: .Alert)
+                self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
+                self.presentViewController(self.alert!, animated: true, completion: nil)
+                // remove from view
+                var tweet = self.tweets[index]
+                // remove registered id from local storage
+                if let obj = ReadStore.sharedInstance.getStoredData(tweet.tweetID) {
+                    ReadStore.sharedInstance.deleteReadData(obj)
+                }
+                self.tweets.removeAtIndex(index)
+                self.tableView!.reloadData()
+                // set reload flag to fav view
+                self.onUnFavorite?()
+                }, error: {
+                    error in
+                    println(error.localizedDescription)
+                    cell.moveToRight()
+                    self.alert = UIAlertController(title: "エラー", message: nil, preferredStyle: .Alert)
+                    self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
+                    self.presentViewController(self.alert!, animated: true, completion: nil)
+            })
+            })
+        self.alert!.addAction(UIAlertAction(title: "キャンセル", style: .Cancel) { action in
+            cell.moveToRight()
+        })
+        self.presentViewController(self.alert!, animated: true, completion: nil)
+    }
+}
+
+extension FavoriteViewController : UITableViewDataSource {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath) as FavoriteTableViewCell
+        cell.delegate = self
+        return cell
     }
 }

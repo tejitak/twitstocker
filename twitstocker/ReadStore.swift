@@ -25,13 +25,13 @@ class ReadStore {
     }
     
     // check the tweet id is in stored data
-    func existsInStoredData(id: String) -> Bool {
+    func getStoredData(id: String) -> NSManagedObject? {
         for obj:NSManagedObject in self.readDataList {
             if id == obj.valueForKey("id") as? String {
-                return true
+                return obj
             }
         }
-        return false
+        return nil
     }
     
     // read from CoreData

@@ -15,14 +15,10 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Setting"
         
-        self.view.backgroundColor = UIColor.cyanColor()
-
-        let closeBtn = UIButton(frame: CGRectMake(0, 0, 100, 100))
-        closeBtn.setTitle("Close", forState: .Normal)
-        closeBtn.addTarget(self, action: "onClickClose", forControlEvents: .TouchUpInside)
-        self.view.addSubview(closeBtn)
+        self.title = "設定"
+        self.view.backgroundColor = UIColor.whiteColor()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "閉じる", style: .Plain, target: self, action: "onClickClose")
     }
     
     override func didReceiveMemoryWarning() {
