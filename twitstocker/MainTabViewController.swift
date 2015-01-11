@@ -12,23 +12,29 @@ import TwitterKit
 
 class MainTabViewController: UITabBarController {
     
-    var firstView: TimelineViewController!
-    var secondView: FavoriteViewController!
+    var timelineView: TimelineViewController!
+    var favoriteView: FavoriteViewController!
     var session: TWTRSession!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        firstView = TimelineViewController()
-        secondView = FavoriteViewController()
+        // initialize local stored core data
+        ReadStore.sharedInstance.load()
         
-        firstView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 1)
-        secondView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Bookmarks, tag: 2)
+        timelineView = TimelineViewController()
+        favoriteView = FavoriteViewController()
+        // register callback on favorite
+        timelineView.onFavorite = {() -> () in
+            self.favoriteView.needReload = true
+        }
+        timelineView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Recents, tag: 1)
+        favoriteView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 2)
         
-        var firstNavigationController = UINavigationController(rootViewController: firstView)
-        var secondNavigationController = UINavigationController(rootViewController: secondView)
+        var timelineNavigationController = UINavigationController(rootViewController: timelineView)
+        var favoriteNavigationController = UINavigationController(rootViewController: favoriteView)
         
-        self.setViewControllers([firstNavigationController, secondNavigationController], animated: false)
+        self.setViewControllers([timelineNavigationController, favoriteNavigationController], animated: false)
     }
     
     override func didReceiveMemoryWarning() {

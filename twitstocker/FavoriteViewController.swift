@@ -12,10 +12,12 @@ import TwitterKit
 
 class FavoriteViewController: BaseTweetViewController {
     
+    var needReload:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "My Favorites"
+        self.title = "お気に入り"
         
         prototypeCell = TWTRTweetTableViewCell(style: .Default, reuseIdentifier: "cell")
         
@@ -23,6 +25,13 @@ class FavoriteViewController: BaseTweetViewController {
         self.view.addSubview(tableView)
 
         refresh()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        if needReload == true {
+            refresh()
+            needReload = false
+        }
     }
     
     override func loadMore(cb: ()->(), errcb: () -> ()) {

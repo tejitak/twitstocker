@@ -37,7 +37,7 @@ class BaseTweetViewController: UIViewController {
         tableView.addSubview(refreshControl)
         
         // nav right item button
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Setting", style: .Plain, target: self, action: "onClickSetting")
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "設定", style: .Plain, target: self, action: "onClickSetting")
     }
     
     func refresh() {

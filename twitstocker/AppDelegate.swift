@@ -17,12 +17,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        // load Twitter framework
+        Fabric.with([Twitter()])
+        
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = LoginViewController()
+        // check if session already exists
+        if let user = Twitter.sharedInstance().session()?.userName? {
+            self.window?.rootViewController = MainTabViewController()
+        }else{
+            self.window?.rootViewController = LoginViewController()
+        }
         self.window?.makeKeyAndVisible()
         
-        Fabric.with([Twitter()])
         return true
     }
 
