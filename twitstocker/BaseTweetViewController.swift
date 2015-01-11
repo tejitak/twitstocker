@@ -17,7 +17,12 @@ class BaseTweetViewController: UIViewController {
     var prototypeCell: TWTRTweetTableViewCell?
     var refreshControl:UIRefreshControl!
     var maxIdStr:String = ""
-    var count:Int = 10
+    
+    let count:Int = 10
+    // if search hash tag is empty, filter with tweets including URL
+//    let searchHashTag:String = "#あとで読む"
+    let searchHashTag:String = ""
+    let excludeHashTag:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,12 +68,14 @@ extension BaseTweetViewController : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as TWTRTweetTableViewCell
-        let tweet = tweets[indexPath.row]
-        cell.tag = indexPath.row
-        cell.configureWithTweet(tweet)
-        // load more data by showing a last table cell
-        if (tweets.count - 1) == indexPath.row && self.maxIdStr != "" {
-            self.loadMore({() -> () in }, errcb: {() -> () in })
+        if tweets.count > indexPath.row {
+            let tweet = tweets[indexPath.row]
+            cell.tag = indexPath.row
+            cell.configureWithTweet(tweet)
+            // load more data by showing a last table cell
+            if (tweets.count - 1) == indexPath.row && self.maxIdStr != "" {
+                self.loadMore({() -> () in }, errcb: {() -> () in })
+            }
         }
         return cell
     }
@@ -76,10 +83,10 @@ extension BaseTweetViewController : UITableViewDataSource {
 
 extension BaseTweetViewController : UITableViewDelegate {
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        let tweet = tweets[indexPath.row]
-        
-        prototypeCell?.configureWithTweet(tweet)
-        
+        if tweets.count > indexPath.row {
+            let tweet = tweets[indexPath.row]
+            prototypeCell?.configureWithTweet(tweet)
+        }
         if let height = prototypeCell?.calculatedHeightForWidth(self.view.bounds.width) {
             return height
         } else {

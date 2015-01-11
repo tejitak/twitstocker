@@ -11,8 +11,9 @@ import UIKit
 import TwitterKit
 
 @objc protocol StockedTableViewCellDelegate {
-    optional func favoriteTweet(index: Int)
-    optional func removeTweet(index: Int)
+    optional func favoriteTweet(cell: StockedTweetTableViewCell)
+//    optional func removeTweet(index: Int)
+    optional func readTweet(cell: StockedTweetTableViewCell)
 }
 
 class StockedTweetTableViewCell : TWTRTweetTableViewCell {
@@ -21,13 +22,17 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
     var haveButtonsDisplayed = false
     
     func favoriteTweet() {
-        delegate?.favoriteTweet?(self.tag)
+        delegate?.favoriteTweet?(self)
     }
     
-    func removeTweet() {
-        delegate?.removeTweet?(self.tag)
+//    func removeTweet() {
+//        delegate?.removeTweet?(self)
+//    }
+
+    func readTweet() {
+        delegate?.readTweet?(self)
     }
-    
+
     override init(style: UITableViewCellStyle, reuseIdentifier: String!) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .None
@@ -56,9 +61,16 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
             let origin = self.contentView.frame.origin
             self.contentView.frame = CGRect(x: origin.x - 100, y:origin.y, width:size.width, height:size.height)
             if origin.x == 0 {
-                self.delegate?.removeTweet?(self.tag)
+//                self.delegate?.removeTweet?(self)
+                self.delegate?.readTweet?(self)
             }
             }) { completed in }
+    }
+    
+    func moveToLeft() {
+        let size   = self.contentView.frame.size
+        let origin = self.contentView.frame.origin
+        self.contentView.frame = CGRect(x: origin.x - 100, y:origin.y, width:size.width, height:size.height)
     }
     
     func onRightSwipe() {
@@ -67,8 +79,14 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
             let origin = self.contentView.frame.origin
             self.contentView.frame = CGRect(x: origin.x + 100, y:origin.y, width:size.width, height:size.height)
             if origin.x == 0 {
-                self.delegate?.favoriteTweet?(self.tag)
+                self.delegate?.favoriteTweet?(self)
             }
             }) { completed in }
+    }
+    
+    func moveToRight() {
+        let size   = self.contentView.frame.size
+        let origin = self.contentView.frame.origin
+        self.contentView.frame = CGRect(x: origin.x + 100, y:origin.y, width:size.width, height:size.height)
     }
 }

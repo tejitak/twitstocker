@@ -37,6 +37,7 @@ class TwitterAPI {
 //        self.callAPI("/statuses/user_timeline.json", parameters: ["screen_name": userName], {
         self.callAPI("/search/tweets.json", parameters: params, {
             response, data, err in
+//            println(NSString(data: data, encoding: NSUTF8StringEncoding))
             if err == nil {
                 var jsonError: NSError?
                 let json: AnyObject? =  NSJSONSerialization.JSONObjectWithData(data,
@@ -79,13 +80,59 @@ class TwitterAPI {
         })
     }
     
+    class func favoriteTweet(params: [NSObject : AnyObject]!, success: ()->(), error: (NSError) -> ()) {
+        // params: id=xxxx
+        self.callPostAPI("/favorites/create.json", parameters: params, {
+            response, data, err in
+            if err == nil {
+                success()
+            } else {
+                error(err)
+            }
+        })
+    }
+    
+    class func deleteTweet(id: String, success: ()->(), error: (NSError) -> ()) {
+        self.callPostAPI("/statuses/destroy/" + id + ".json", parameters: nil, {
+            response, data, err in
+            if err == nil {
+                success()
+            } else {
+                error(err)
+            }
+        })
+    }
+    
+    class func updateTweet(params: [NSObject : AnyObject]!, success: ()->(), error: (NSError) -> ()) {
+        // params: status=xxxx
+        self.callPostAPI("/statuses/update.json", parameters: params, {
+            response, data, err in
+            if err == nil {
+                success()
+            } else {
+                error(err)
+            }
+        })
+    }
+    
     class func callAPI(path: String, parameters: [NSObject : AnyObject]!, completion: TWTRNetworkCompletion!){
+        self._callAPI(path, method: "GET", parameters: parameters, completion)
+    }
+
+    class func callPostAPI(path: String, parameters: [NSObject : AnyObject]!, completion: TWTRNetworkCompletion!){
+        self._callAPI(path, method: "POST", parameters: parameters, completion)
+    }
+
+    class func _callAPI(path: String, method: String, parameters: [NSObject : AnyObject]!, completion: TWTRNetworkCompletion!){
         let api = TwitterAPI()
         var clientError: NSError?
         let endpoint = api.baseURL + api.version + path
-        let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod("GET", URL: endpoint, parameters: parameters, error: &clientError)
+        let request = Twitter.sharedInstance().APIClient.URLRequestWithMethod(method, URL: endpoint, parameters: parameters, error: &clientError)
         if request != nil {
             Twitter.sharedInstance().APIClient.sendTwitterRequest(request, completion: completion)
         }
     }
+    
+    
+    
 }

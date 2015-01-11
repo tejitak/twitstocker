@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		001AAF6E1A4FE466004EB54E /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */; };
 		001AAF701A4FF4FE004EB54E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */; };
+		0037CD101A62855B0089EA42 /* twitstocker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0037CD0E1A62855B0089EA42 /* twitstocker.xcdatamodeld */; };
 		009D1E311A4F9EE5007C28C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */; };
 		009D1E351A4F9EE5007C28C7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E341A4F9EE5007C28C7 /* FavoriteViewController.swift */; };
 		009D1E3A1A4F9EE5007C28C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 009D1E391A4F9EE5007C28C7 /* Images.xcassets */; };
@@ -39,6 +40,7 @@
 /* Begin PBXFileReference section */
 		001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		0037CD0F1A62855B0089EA42 /* twitstocker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = twitstocker.xcdatamodel; sourceTree = "<group>"; };
 		009D1E2B1A4F9EE5007C28C7 /* twitstocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitstocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		009D1E2F1A4F9EE5007C28C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */,
+				0037CD0E1A62855B0089EA42 /* twitstocker.xcdatamodeld */,
 				009D1E341A4F9EE5007C28C7 /* FavoriteViewController.swift */,
 				009D1E391A4F9EE5007C28C7 /* Images.xcassets */,
 				009D1E3B1A4F9EE5007C28C7 /* LaunchScreen.xib */,
@@ -272,6 +275,7 @@
 				009D1E5C1A4FA23F007C28C7 /* TwitterAPI.swift in Sources */,
 				00EFBB301A5AB06C001D9A03 /* SettingViewController.swift in Sources */,
 				001AAF6E1A4FE466004EB54E /* MainTabViewController.swift in Sources */,
+				0037CD101A62855B0089EA42 /* twitstocker.xcdatamodeld in Sources */,
 				00A36E951A50358400B15D10 /* StockedTweetTableViewCell.swift in Sources */,
 				009D1E5E1A4FA257007C28C7 /* TimelineViewController.swift in Sources */,
 				00EFBB321A5AB66F001D9A03 /* Tutorial.swift in Sources */,
@@ -478,6 +482,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		0037CD0E1A62855B0089EA42 /* twitstocker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0037CD0F1A62855B0089EA42 /* twitstocker.xcdatamodel */,
+			);
+			currentVersion = 0037CD0F1A62855B0089EA42 /* twitstocker.xcdatamodel */;
+			path = twitstocker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 009D1E231A4F9EE4007C28C7 /* Project object */;
 }
