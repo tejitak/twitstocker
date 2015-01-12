@@ -13,9 +13,13 @@ class SettingStore {
     
     let entityName: String = "Setting"
     
-    var hashtag: String = ""
-    var skipTutorial: Bool = false
-    var needConfirm: Bool = true
+    let KEY_HASHTAG: String = "hashtag"
+    let KEY_NO_CONFRIM: String = "noConfirm"
+    
+    var config: NSManagedObject?
+
+//    var hashtag: String = ""
+//    var needConfirm: Bool = true
     
     class var sharedInstance :SettingStore {
         struct Static {
@@ -35,11 +39,8 @@ class SettingStore {
         /* Get result array from ManagedObjectContext */
         let fetchResults = manageContext.executeFetchRequest(fetchRequest, error: &error)
         if let results: Array = fetchResults {
-            for obj:AnyObject in results {
-                // check if 2 weeks past to delete old tweets never shown in search API
-                self.hashtag = obj.valueForKey("hashtag") as String
-                self.skipTutorial = obj.valueForKey("skipTutorial") as Bool
-                self.needConfirm = obj.valueForKey("needConfirm") as Bool
+            if results.count > 0 {
+                self.config = results[0] as? NSManagedObject
             }
         } else {
 //            println("Could not fetch \(error) , \(error!.userInfo)")
@@ -50,11 +51,14 @@ class SettingStore {
         /* Get ManagedObjectContext from AppDelegate */
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext: NSManagedObjectContext = appDelegate.managedObjectContext!
-        /* Create new ManagedObject */
-        let entity = NSEntityDescription.entityForName(self.entityName, inManagedObjectContext: managedContext)
-        let obj = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        if self.config == nil {
+            /* Create new ManagedObject */
+            let entity = NSEntityDescription.entityForName(self.entityName, inManagedObjectContext: managedContext)
+            self.config = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext)
+        }
         /* Set the name attribute using key-value coding */
-        obj.setValue(value, forKey: key)
+        self.config?.setValue(value, forKey: key)
+        
         /* Error handling */
         var error: NSError?
         if !managedContext.save(&error) {
@@ -62,4 +66,19 @@ class SettingStore {
         }
     }
     
+    func getHashtag() -> String? {
+        return self.config?.valueForKey(self.KEY_HASHTAG) as String?
+    }
+
+    func saveHashtag(hashtag: String?) {
+        self.saveSettingData(self.KEY_HASHTAG, value: hashtag)
+    }
+    
+    func getNoConfirm() -> Bool {
+        return self.config?.valueForKey(self.KEY_NO_CONFRIM) as Bool
+    }
+
+    func saveNoConfirm(noConfirm: Bool) {
+        self.saveSettingData(self.KEY_NO_CONFRIM, value: noConfirm)
+    }
 }

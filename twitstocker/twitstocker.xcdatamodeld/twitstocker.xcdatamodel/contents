@@ -4,7 +4,12 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Setting" syncable="YES">
+        <attribute name="hashtag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="noConfirm" optional="YES" attributeType="Boolean" syncable="YES"/>
+    </entity>
     <elements>
         <element name="Read" positionX="-63" positionY="-18" width="128" height="75"/>
+        <element name="Setting" positionX="-63" positionY="0" width="128" height="75"/>
     </elements>
 </model>
