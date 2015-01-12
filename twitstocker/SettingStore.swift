@@ -74,8 +74,11 @@ class SettingStore {
         self.saveSettingData(self.KEY_HASHTAG, value: hashtag)
     }
     
-    func getNoConfirm() -> Bool {
-        return self.config?.valueForKey(self.KEY_NO_CONFRIM) as Bool
+    func isNoConfirm() -> Bool {
+        if let r = self.config?.valueForKey(self.KEY_NO_CONFRIM) as Bool? {
+            return r
+        }
+        return false
     }
 
     func saveNoConfirm(noConfirm: Bool) {

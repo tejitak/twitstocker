@@ -62,10 +62,24 @@ class FavoriteViewController: BaseTweetViewController {
 extension FavoriteViewController: FavoriteTableViewCellDelegate {
     func unfavoriteTweet(cell: FavoriteTableViewCell) {
         let index: Int = cell.tag
-        // show confirmation
-        self.alert = UIAlertController(title: "お気に入りをやめますか？", message: nil, preferredStyle: .Alert)
-        self.alert!.addAction(UIAlertAction(title: "OK", style: .Destructive) { action in
-            // call favorite API
+        if SettingStore.sharedInstance.isNoConfirm() {
+            self.submitUnfavorite(index, cell: cell)
+        } else {
+            // show confirmation
+            self.alert = UIAlertController(title: "お気に入りをやめますか？", message: nil, preferredStyle: .Alert)
+            self.alert!.addAction(UIAlertAction(title: "OK", style: .Destructive) { action in
+                self.submitUnfavorite(index, cell: cell)
+            })
+            self.alert!.addAction(UIAlertAction(title: "キャンセル", style: .Cancel) { action in
+                cell.moveToRight()
+            })
+            self.presentViewController(self.alert!, animated: true, completion: nil)
+        }
+    }
+    
+    func submitUnfavorite(index: Int, cell: FavoriteTableViewCell) {
+        // call favorite API
+        if tweets.count > index {
             var params = ["id": self.tweets[index].tweetID]
             TwitterAPI.unfavoriteTweet(params, success: {
                 twttrs in
@@ -78,7 +92,7 @@ extension FavoriteViewController: FavoriteTableViewCellDelegate {
                 }
                 self.tweets.removeAtIndex(index)
                 self.tableView!.reloadData()
-                // set reload flag to fav view
+                // set reload flag to read view
                 self.onUnFavorite?()
                 }, error: {
                     error in
@@ -87,11 +101,7 @@ extension FavoriteViewController: FavoriteTableViewCellDelegate {
                     self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
                     self.presentViewController(self.alert!, animated: true, completion: nil)
             })
-            })
-        self.alert!.addAction(UIAlertAction(title: "キャンセル", style: .Cancel) { action in
-            cell.moveToRight()
-        })
-        self.presentViewController(self.alert!, animated: true, completion: nil)
+        }
     }
 }
 
