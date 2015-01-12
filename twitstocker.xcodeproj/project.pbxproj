@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		001AAF6E1A4FE466004EB54E /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */; };
 		001AAF701A4FF4FE004EB54E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */; };
+		001F35C01A638F3F002BC237 /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F35BF1A638F3F002BC237 /* HRToast+UIView.swift */; };
 		0037CD101A62855B0089EA42 /* twitstocker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0037CD0E1A62855B0089EA42 /* twitstocker.xcdatamodeld */; };
 		0037CD121A629CC40089EA42 /* ReadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037CD111A629CC40089EA42 /* ReadStore.swift */; };
 		008636741A62B02F009D5EE7 /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008636731A62B02F009D5EE7 /* SettingStore.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		001F35BF1A638F3F002BC237 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HRToast+UIView.swift"; path = "twitstocker/lib/HRToast+UIView.swift"; sourceTree = SOURCE_ROOT; };
 		0037CD0F1A62855B0089EA42 /* twitstocker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = twitstocker.xcdatamodel; sourceTree = "<group>"; };
 		0037CD111A629CC40089EA42 /* ReadStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStore.swift; sourceTree = "<group>"; };
 		008636731A62B02F009D5EE7 /* SettingStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
@@ -88,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		001F35BC1A638EFE002BC237 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				001F35BF1A638F3F002BC237 /* HRToast+UIView.swift */,
+			);
+			name = lib;
+			path = ../../lib;
+			sourceTree = "<group>";
+		};
 		009D1E221A4F9EE4007C28C7 = {
 			isa = PBXGroup;
 			children = (
@@ -113,6 +124,7 @@
 		009D1E2D1A4F9EE5007C28C7 /* twitstocker */ = {
 			isa = PBXGroup;
 			children = (
+				001F35BC1A638EFE002BC237 /* lib */,
 				009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */,
 				0037CD0E1A62855B0089EA42 /* twitstocker.xcdatamodeld */,
 				009D1E341A4F9EE5007C28C7 /* FavoriteViewController.swift */,
@@ -285,6 +297,7 @@
 				008636761A62C320009D5EE7 /* FavoriteTableViewCell.swift in Sources */,
 				009D1E5C1A4FA23F007C28C7 /* TwitterAPI.swift in Sources */,
 				00EFBB301A5AB06C001D9A03 /* SettingViewController.swift in Sources */,
+				001F35C01A638F3F002BC237 /* HRToast+UIView.swift in Sources */,
 				001AAF6E1A4FE466004EB54E /* MainTabViewController.swift in Sources */,
 				008636741A62B02F009D5EE7 /* SettingStore.swift in Sources */,
 				0037CD101A62855B0089EA42 /* twitstocker.xcdatamodeld in Sources */,

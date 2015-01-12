@@ -54,16 +54,18 @@ class ReadStore {
                 let calendar = NSCalendar.currentCalendar()
                 let comps = NSDateComponents()
                 comps.day = -self.expiration
-                let twoWeeksAgo = calendar.dateByAddingComponents(comps, toDate: NSDate(), options: NSCalendarOptions.allZeros)
-                if createdAt?.compare(twoWeeksAgo!) == NSComparisonResult.OrderedAscending {
+                let expirationDate = calendar.dateByAddingComponents(comps, toDate: NSDate(), options: NSCalendarOptions.allZeros)
+                if createdAt?.compare(expirationDate!) == NSComparisonResult.OrderedAscending {
                     removeList.append(obj as NSManagedObject)
                     continue
                 }
+//                println("store loaded")
+//                println(id)
                 self.readDataList.append(obj as NSManagedObject)
             }
             // remove
             for obj:NSManagedObject in removeList {
-                self.deleteReadData(obj)
+                self.deleteReadData(obj, reload: false)
             }
         } else {
 //            println("Could not fetch \(error) , \(error!.userInfo)")
@@ -86,10 +88,12 @@ class ReadStore {
         if !managedContext.save(&error) {
 //            println("Could not save \(error), \(error?.userInfo)")
         }
+        // reload data
+        load()
     }
     
     // delete an entry in CoreData
-    func deleteReadData(managedObject: NSManagedObject) {
+    func deleteReadData(managedObject: NSManagedObject, reload: Bool) {
         /* Get ManagedObjectContext from AppDelegate */
         let appDelegate: AppDelegate = UIApplication.sharedApplication().delegate as AppDelegate
         let managedContext: NSManagedObjectContext = appDelegate.managedObjectContext!
@@ -99,6 +103,9 @@ class ReadStore {
         var error: NSError?
         if !managedContext.save(&error) {
 //            println("Could not update \(error), \(error!.userInfo)")
+        }
+        if reload {
+            load()
         }
     }
     
@@ -114,10 +121,12 @@ class ReadStore {
         if let results: Array = fetchResults {
             var removeList = [NSManagedObject]();
             for obj:AnyObject in results {
-                self.deleteReadData(obj as NSManagedObject)
+                self.deleteReadData(obj as NSManagedObject, reload: false)
             }
         } else {
 //            println("Could not fetch \(error) , \(error!.userInfo)")
         }
+        // reload data
+        load()
     }
 }

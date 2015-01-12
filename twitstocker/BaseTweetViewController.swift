@@ -19,7 +19,8 @@ class BaseTweetViewController: UIViewController {
     var maxIdStr:String = ""
     var needReload:Bool = false
     
-    let count:Int = 40
+    // count per an API request
+    let count:Int = 20
     // if search hash tag is empty, filter with tweets including URL
 //    let searchHashTag:String = "#あとで読む"
     let searchHashTag:String = ""
@@ -45,9 +46,14 @@ class BaseTweetViewController: UIViewController {
         // clear existing tweets
         self.tweets = []
         self.maxIdStr = ""
+        self.view.makeToastActivity()
         loadMore({() -> () in
             self.refreshControl.endRefreshing()
-            }, errcb: {() -> () in self.refreshControl.endRefreshing()}
+            self.view.hideToastActivity()
+            }, errcb: {() -> () in
+                self.refreshControl.endRefreshing()
+                self.view.hideToastActivity()
+            }
         )
     }
     

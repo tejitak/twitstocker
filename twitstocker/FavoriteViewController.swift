@@ -51,7 +51,9 @@ class FavoriteViewController: BaseTweetViewController {
             self.tableView.reloadData()
             }, error: {
                 error in
-//                println(error.localizedDescription)
+                self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
+                self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
+                self.presentViewController(self.alert!, animated: true, completion: nil)
                 errcb()
         })
     }
@@ -67,14 +69,12 @@ extension FavoriteViewController: FavoriteTableViewCellDelegate {
             var params = ["id": self.tweets[index].tweetID]
             TwitterAPI.unfavoriteTweet(params, success: {
                 twttrs in
-                self.alert = UIAlertController(title: "お気に入りをやめました", message: nil, preferredStyle: .Alert)
-                self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
-                self.presentViewController(self.alert!, animated: true, completion: nil)
+                self.view.makeToast(message: "お気に入りをやめました", duration: 2, position: HRToastPositionTop)
                 // remove from view
                 var tweet = self.tweets[index]
                 // remove registered id from local storage
                 if let obj = ReadStore.sharedInstance.getStoredData(tweet.tweetID) {
-                    ReadStore.sharedInstance.deleteReadData(obj)
+                    ReadStore.sharedInstance.deleteReadData(obj, reload: true)
                 }
                 self.tweets.removeAtIndex(index)
                 self.tableView!.reloadData()
@@ -82,9 +82,8 @@ extension FavoriteViewController: FavoriteTableViewCellDelegate {
                 self.onUnFavorite?()
                 }, error: {
                     error in
-//                    println(error.localizedDescription)
                     cell.moveToRight()
-                    self.alert = UIAlertController(title: "エラー", message: nil, preferredStyle: .Alert)
+                    self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
                     self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
                     self.presentViewController(self.alert!, animated: true, completion: nil)
             })
