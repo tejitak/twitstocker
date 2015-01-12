@@ -19,7 +19,7 @@ class BaseTweetViewController: UIViewController {
     var maxIdStr:String = ""
     var needReload:Bool = false
     
-    let count:Int = 10
+    let count:Int = 40
     // if search hash tag is empty, filter with tweets including URL
 //    let searchHashTag:String = "#あとで読む"
     let searchHashTag:String = ""

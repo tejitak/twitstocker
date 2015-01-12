@@ -1,6 +1,6 @@
 //
 //  TimelineViewController.swift
-//  test
+//  twitstocker
 //
 //  Created by TEJIMA TAKUYA on 2014/12/24.
 //  Copyright (c) 2014年 TEJIMA TAKUYA. All rights reserved.
@@ -15,6 +15,7 @@ class TimelineViewController: BaseTweetViewController {
     
     var alert : UIAlertController?
     var onFavorite : (() -> Void)?
+    var unreadCount : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,11 @@ class TimelineViewController: BaseTweetViewController {
         
         // load first page
         refresh()
+    }
+    
+    override func refresh() {
+        self.unreadCount = 0
+        super.refresh()
     }
     
     override func loadMore(cb: ()->(), errcb: () -> ()) {
@@ -52,17 +58,23 @@ class TimelineViewController: BaseTweetViewController {
                 if ReadStore.sharedInstance.getStoredData(tweet.tweetID) != nil {
                     continue
                 }
+                // update title
+                self.unreadCount++
+                self.title = "未読記事(" + String(self.unreadCount) + ")"
                 self.tweets.append(tweet)
                 self.maxIdStr = tweet.tweetID
             }
-            // end of all pages
             if twttrs.count < self.count {
+                // end of all pages
                 self.maxIdStr = ""
+            }else{
+                // continue to load until all done
+                self.loadMore({() -> () in }, errcb: {() -> () in })
             }
             self.tableView.reloadData()
             }, error: {
                 error in
-                println(error.localizedDescription)
+//                println(error.localizedDescription)
                 errcb()
         })
     }
@@ -91,7 +103,7 @@ extension TimelineViewController: StockedTableViewCellDelegate {
                 self.onFavorite?()
                 }, error: {
                     error in
-                    println(error.localizedDescription)
+//                    println(error.localizedDescription)
                     cell.moveToLeft()
                     self.alert = UIAlertController(title: "エラー", message: nil, preferredStyle: .Alert)
                     self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
@@ -103,17 +115,6 @@ extension TimelineViewController: StockedTableViewCellDelegate {
         })
         self.presentViewController(self.alert!, animated: true, completion: nil)
     }
-    
-//    func removeTweet(cell: StockedTweetTableViewCell) {
-//        let index: Int = cell.tag
-//        self.alert = UIAlertController(title: "ツイートが削除されますがよろしいですか？", message: nil, preferredStyle: .Alert)
-//        self.alert!.addAction(UIAlertAction(title: "Delete", style: .Destructive) { action in
-//            self.tweets.removeAtIndex(index)
-//            self.tableView!.reloadData()
-//        })
-//        self.alert!.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-//        self.presentViewController(self.alert!, animated: true, completion: nil)
-//    }
     
     func readTweet(cell: StockedTweetTableViewCell) {
         let index: Int = cell.tag
@@ -130,13 +131,17 @@ extension TimelineViewController: StockedTableViewCellDelegate {
         })
         self.presentViewController(self.alert!, animated: true, completion: nil)
     }
-
 }
 
 extension TimelineViewController : UITableViewDataSource {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath) as StockedTweetTableViewCell
-        cell.delegate = self
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as StockedTweetTableViewCell
+        if tweets.count > indexPath.row {
+            cell.delegate = self
+            let tweet = tweets[indexPath.row]
+            cell.tag = indexPath.row
+            cell.configureWithTweet(tweet)
+        }
         return cell
     }
 }

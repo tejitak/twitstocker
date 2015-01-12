@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  FavoriteViewController.swift
 //  twitstocker
 //
 //  Created by Takuya Tejima on 2014/12/28.
@@ -51,7 +51,7 @@ class FavoriteViewController: BaseTweetViewController {
             self.tableView.reloadData()
             }, error: {
                 error in
-                println(error.localizedDescription)
+//                println(error.localizedDescription)
                 errcb()
         })
     }
@@ -82,7 +82,7 @@ extension FavoriteViewController: FavoriteTableViewCellDelegate {
                 self.onUnFavorite?()
                 }, error: {
                     error in
-                    println(error.localizedDescription)
+//                    println(error.localizedDescription)
                     cell.moveToRight()
                     self.alert = UIAlertController(title: "エラー", message: nil, preferredStyle: .Alert)
                     self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))

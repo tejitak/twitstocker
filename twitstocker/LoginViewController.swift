@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
             if session != nil {
                 UIApplication.sharedApplication().keyWindow?.rootViewController = MainTabViewController()
             } else {
-                println(error.localizedDescription)
+//                println(error.localizedDescription)
             }
         })
         logInButton.center = self.view.center

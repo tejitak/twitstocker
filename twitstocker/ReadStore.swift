@@ -1,5 +1,5 @@
 //
-//  readStore.swift
+//  ReadStore.swift
 //  twitstocker
 //
 //  Created by Takuya Tejima on 2015/01/11.
@@ -56,24 +56,17 @@ class ReadStore {
                 comps.day = -self.expiration
                 let twoWeeksAgo = calendar.dateByAddingComponents(comps, toDate: NSDate(), options: NSCalendarOptions.allZeros)
                 if createdAt?.compare(twoWeeksAgo!) == NSComparisonResult.OrderedAscending {
-                    println("Remove")
-                    println(id)
-                    println(createdAt)
                     removeList.append(obj as NSManagedObject)
                     continue
                 }
                 self.readDataList.append(obj as NSManagedObject)
-                println("Fetched")
-                println(id)
-                println(createdAt)
             }
-            println(results.count)
             // remove
             for obj:NSManagedObject in removeList {
                 self.deleteReadData(obj)
             }
         } else {
-            println("Could not fetch \(error) , \(error!.userInfo)")
+//            println("Could not fetch \(error) , \(error!.userInfo)")
         }
     }
     
@@ -91,9 +84,8 @@ class ReadStore {
         /* Error handling */
         var error: NSError?
         if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+//            println("Could not save \(error), \(error?.userInfo)")
         }
-        println("object saved")
     }
     
     // delete an entry in CoreData
@@ -106,9 +98,8 @@ class ReadStore {
         /* Save value to managed context */
         var error: NSError?
         if !managedContext.save(&error) {
-            println("Could not update \(error), \(error!.userInfo)")
+//            println("Could not update \(error), \(error!.userInfo)")
         }
-        println("Object deleted")
     }
     
     func resetAllReadData(){
@@ -126,9 +117,7 @@ class ReadStore {
                 self.deleteReadData(obj as NSManagedObject)
             }
         } else {
-            println("Could not fetch \(error) , \(error!.userInfo)")
+//            println("Could not fetch \(error) , \(error!.userInfo)")
         }
     }
-
-
 }

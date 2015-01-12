@@ -1,6 +1,6 @@
 //
 //  TwitterAPI.swift
-//  test
+//  twitstocker
 //
 //  Created by TEJIMA TAKUYA on 2014/12/24.
 //  Copyright (c) 2014年 TEJIMA TAKUYA. All rights reserved.
@@ -34,7 +34,6 @@ class TwitterAPI {
     }
     
     class func search(params: [NSObject : AnyObject]!, tweets: [TWTRTweet]->(), error: (NSError) -> ()) {
-//        self.callAPI("/statuses/user_timeline.json", parameters: ["screen_name": userName], {
         self.callAPI("/search/tweets.json", parameters: params, {
             response, data, err in
 //            println(NSString(data: data, encoding: NSUTF8StringEncoding))
@@ -81,7 +80,6 @@ class TwitterAPI {
     }
     
     class func favoriteTweet(params: [NSObject : AnyObject]!, success: ()->(), error: (NSError) -> ()) {
-        // params: id=xxxx
         self.callPostAPI("/favorites/create.json", parameters: params, {
             response, data, err in
             if err == nil {
@@ -93,7 +91,6 @@ class TwitterAPI {
     }
 
     class func unfavoriteTweet(params: [NSObject : AnyObject]!, success: ()->(), error: (NSError) -> ()) {
-        // params: id=xxxx
         self.callPostAPI("/favorites/destroy.json", parameters: params, {
             response, data, err in
             if err == nil {
@@ -116,7 +113,6 @@ class TwitterAPI {
     }
     
     class func updateTweet(params: [NSObject : AnyObject]!, success: ()->(), error: (NSError) -> ()) {
-        // params: status=xxxx
         self.callPostAPI("/statuses/update.json", parameters: params, {
             response, data, err in
             if err == nil {
@@ -144,7 +140,4 @@ class TwitterAPI {
             Twitter.sharedInstance().APIClient.sendTwitterRequest(request, completion: completion)
         }
     }
-    
-    
-    
 }

@@ -42,7 +42,7 @@ class SettingStore {
                 self.needConfirm = obj.valueForKey("needConfirm") as Bool
             }
         } else {
-            println("Could not fetch \(error) , \(error!.userInfo)")
+//            println("Could not fetch \(error) , \(error!.userInfo)")
         }
     }
     
@@ -58,9 +58,8 @@ class SettingStore {
         /* Error handling */
         var error: NSError?
         if !managedContext.save(&error) {
-            println("Could not save \(error), \(error?.userInfo)")
+//            println("Could not save \(error), \(error?.userInfo)")
         }
-        println("object saved")
     }
     
 }

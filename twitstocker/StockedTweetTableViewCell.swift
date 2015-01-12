@@ -12,7 +12,6 @@ import TwitterKit
 
 @objc protocol StockedTableViewCellDelegate {
     optional func favoriteTweet(cell: StockedTweetTableViewCell)
-//    optional func removeTweet(index: Int)
     optional func readTweet(cell: StockedTweetTableViewCell)
 }
 
@@ -24,10 +23,6 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
     func favoriteTweet() {
         delegate?.favoriteTweet?(self)
     }
-    
-//    func removeTweet() {
-//        delegate?.removeTweet?(self)
-//    }
 
     func readTweet() {
         delegate?.readTweet?(self)
@@ -61,7 +56,6 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
             let origin = self.contentView.frame.origin
             self.contentView.frame = CGRect(x: origin.x - 100, y:origin.y, width:size.width, height:size.height)
             if origin.x == 0 {
-//                self.delegate?.removeTweet?(self)
                 self.delegate?.readTweet?(self)
             }
             }) { completed in }

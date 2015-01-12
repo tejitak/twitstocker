@@ -31,6 +31,7 @@ class MainTabViewController: UITabBarController {
         favoriteView.onUnFavorite = {() -> () in
             self.timelineView.needReload = true
         }
+        
         timelineView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Recents, tag: 1)
         favoriteView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 2)
         
