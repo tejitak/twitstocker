@@ -12,6 +12,7 @@
 		001F35C01A638F3F002BC237 /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F35BF1A638F3F002BC237 /* HRToast+UIView.swift */; };
 		0037CD101A62855B0089EA42 /* twitstocker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0037CD0E1A62855B0089EA42 /* twitstocker.xcdatamodeld */; };
 		0037CD121A629CC40089EA42 /* ReadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037CD111A629CC40089EA42 /* ReadStore.swift */; };
+		005678591A657A1A004F5B62 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005678581A657A1A004F5B62 /* Constants.swift */; };
 		008636741A62B02F009D5EE7 /* SettingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008636731A62B02F009D5EE7 /* SettingStore.swift */; };
 		008636761A62C320009D5EE7 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 008636751A62C320009D5EE7 /* FavoriteTableViewCell.swift */; };
 		009D1E311A4F9EE5007C28C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 		001F35BF1A638F3F002BC237 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HRToast+UIView.swift"; path = "twitstocker/lib/HRToast+UIView.swift"; sourceTree = SOURCE_ROOT; };
 		0037CD0F1A62855B0089EA42 /* twitstocker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = twitstocker.xcdatamodel; sourceTree = "<group>"; };
 		0037CD111A629CC40089EA42 /* ReadStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStore.swift; sourceTree = "<group>"; };
+		005678581A657A1A004F5B62 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		008636731A62B02F009D5EE7 /* SettingStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingStore.swift; sourceTree = "<group>"; };
 		008636751A62C320009D5EE7 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
 		009D1E2B1A4F9EE5007C28C7 /* twitstocker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = twitstocker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +141,7 @@
 				0037CD111A629CC40089EA42 /* ReadStore.swift */,
 				008636731A62B02F009D5EE7 /* SettingStore.swift */,
 				008636751A62C320009D5EE7 /* FavoriteTableViewCell.swift */,
+				005678581A657A1A004F5B62 /* Constants.swift */,
 			);
 			path = twitstocker;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 				009D1E311A4F9EE5007C28C7 /* AppDelegate.swift in Sources */,
 				0037CD121A629CC40089EA42 /* ReadStore.swift in Sources */,
 				00A36E931A50339800B15D10 /* BaseTweetViewController.swift in Sources */,
+				005678591A657A1A004F5B62 /* Constants.swift in Sources */,
 				008636761A62C320009D5EE7 /* FavoriteTableViewCell.swift in Sources */,
 				009D1E5C1A4FA23F007C28C7 /* TwitterAPI.swift in Sources */,
 				00EFBB301A5AB06C001D9A03 /* SettingViewController.swift in Sources */,

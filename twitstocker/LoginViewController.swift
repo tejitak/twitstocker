@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         let width = self.view.frame.maxX, height = self.view.frame.maxY
-        self.view.backgroundColor = UIColor.blueColor()
+        self.view.backgroundColor = Constants.Theme.color()
         scrollView = UIScrollView(frame: self.view.frame)
 
         scrollView.showsHorizontalScrollIndicator = false;
