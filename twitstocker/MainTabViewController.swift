@@ -47,4 +47,12 @@ class MainTabViewController: UITabBarController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
+    
+    override func removeFromParentViewController() {
+        self.timelineView?.view?.removeFromSuperview()
+        self.timelineView?.removeFromParentViewController()
+        self.favoriteView?.view?.removeFromSuperview()
+        self.favoriteView?.removeFromParentViewController()
+        super.removeFromParentViewController()
+    }
 }

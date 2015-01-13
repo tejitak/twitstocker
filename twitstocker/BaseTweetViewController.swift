@@ -72,9 +72,6 @@ class BaseTweetViewController: UIViewController {
         let settingViewCtrl = SettingViewController()
         let modalView = UINavigationController(rootViewController: settingViewCtrl)
         modalView.modalTransitionStyle = UIModalTransitionStyle.CoverVertical
-        settingViewCtrl.onClose = {() -> () in
-            self.needReload = true
-        }
         self.presentViewController(modalView, animated: true, completion: nil)
     }
 }

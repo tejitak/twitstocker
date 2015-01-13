@@ -11,8 +11,6 @@ import UIKit
 import TwitterKit
 
 class SettingViewController: UIViewController {
-
-    var onClose : (() -> Void)?
     
     var closeBtn: UIBarButtonItem?
     var hashtagInput: UITextField?
@@ -41,7 +39,7 @@ class SettingViewController: UIViewController {
         self.view.addSubview(hashtagInput)
         
         let hashtagDescription: UILabel = UILabel(frame: CGRectMake(20, 170, width - 40, 0))
-        hashtagDescription.text = "設定したハッシュタグを含むあなたのツイートを表示し、空欄の場合はURLを含むツイートを表示します\n\n※ただしTwitter APIの検索結果に依存するため、あなたの過去全てのTweetは表示されない可能性があります。"
+        hashtagDescription.text = "設定したハッシュタグを含むあなたのツイートを表示し、空欄の場合はURLを含むツイートを表示します\n\n※ただしTwitter Search APIに依存するため、あなたの過去全てのツイートは表示されない可能性があります。"
         hashtagDescription.font = UIFont.systemFontOfSize(12)
         hashtagDescription.numberOfLines = 0
         hashtagDescription.textAlignment = NSTextAlignment.Left
@@ -88,7 +86,6 @@ class SettingViewController: UIViewController {
     func onClickResetReadData(){
         ReadStore.sharedInstance.resetAllReadData()
         // reload timeline after close
-//        reset = true
         close(true)
     }
     
@@ -96,18 +93,24 @@ class SettingViewController: UIViewController {
         // show login dialog
         Twitter.sharedInstance().logOut()
         close(false)
+        // remove original view controllers
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.view?.removeFromSuperview()
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.removeFromParentViewController()
+        // show a new login view
         UIApplication.sharedApplication().keyWindow?.rootViewController = LoginViewController()
     }
     
     func close(reload: Bool) {
-        var changed:Bool = reload
         // save all settings
         SettingStore.sharedInstance.saveHashtag(self.hashtagInput?.text)
         if let noConfirm = self.noConfirmSwitch {
             SettingStore.sharedInstance.saveNoConfirm(noConfirm.on)
         }
         if reload {
-            self.onClose?()
+            // set true for reload flag for timeline view
+            if let viewController = UIApplication.sharedApplication().keyWindow?.rootViewController as? MainTabViewController {
+                viewController.timelineView.needReload = true
+            }
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
