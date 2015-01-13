@@ -39,7 +39,7 @@ class SettingViewController: UIViewController {
         self.view.addSubview(hashtagInput)
         
         let hashtagDescription: UILabel = UILabel(frame: CGRectMake(20, 170, width - 40, 0))
-        hashtagDescription.text = "設定したハッシュタグを含むあなたのツイートを表示し、空欄の場合はURLを含むツイートを表示します\n\n※ただしTwitter Search APIに依存するため、あなたの過去全てのツイートは表示されない可能性があります。"
+        hashtagDescription.text = "設定したハッシュタグを含むツイートを表示し、空欄の場合はURLを含むツイートを表示します\n\n※Twitter Search APIの制限のため、表示されるのは約2週間以内のツイートです"
         hashtagDescription.font = UIFont.systemFontOfSize(12)
         hashtagDescription.numberOfLines = 0
         hashtagDescription.textAlignment = NSTextAlignment.Left
