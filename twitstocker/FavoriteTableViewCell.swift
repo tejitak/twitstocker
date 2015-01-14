@@ -49,10 +49,11 @@ class FavoriteTableViewCell : TWTRTweetTableViewCell {
             let size   = self.contentView.frame.size
             let origin = self.contentView.frame.origin
             self.contentView.frame = CGRect(x: origin.x - 100, y:origin.y, width:size.width, height:size.height)
-            if origin.x == 0 {
-                self.delegate?.unfavoriteTweet?(self)
+            }) { completed in
+                if self.contentView.frame.origin.x == -100 {
+                    self.delegate?.unfavoriteTweet?(self)
+                }
             }
-            }) { completed in }
     }
     
     func moveToRight() {

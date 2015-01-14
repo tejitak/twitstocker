@@ -20,7 +20,6 @@ class MainTabViewController: UITabBarController {
         super.viewDidLoad()
         
         // initialize local stored core data
-        ReadStore.sharedInstance.resetAllReadData()
         ReadStore.sharedInstance.load()
         // init config
         SettingStore.sharedInstance.load()

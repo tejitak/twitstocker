@@ -16,11 +16,14 @@ class TimelineViewController: BaseTweetViewController {
     var alert : UIAlertController?
     var onFavorite : (() -> Void)?
     var unreadCount : Int = 0
+    // future use
+    var excludeHashTag: String = ""
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.updateTitle()
+//        self.updateTitle()
         
         prototypeCell = TWTRTweetTableViewCell(style: .Default, reuseIdentifier: "cell")
         
@@ -37,12 +40,18 @@ class TimelineViewController: BaseTweetViewController {
     }
     
     override func loadMore(cb: ()->(), errcb: () -> ()) {
-        var q = self.searchHashTag == "" ? "filter:links+-filter:images" : self.searchHashTag
+        var q = "from:" + Twitter.sharedInstance().session().userName;
+        let hashtag = SettingStore.sharedInstance.getHashtag()
+        if hashtag == nil || hashtag == "" {
+            q += "+filter:links+-filter:images"
+        }else{
+            q += "+" + hashtag!
+        }
         // exclude tweets already read
-        if excludeHashTag != "" {
+        if self.excludeHashTag != "" {
             q += "+-" + self.excludeHashTag
         }
-        var params = ["q": q + "+from:" + Twitter.sharedInstance().session().userName, "result_type": "recent", "count": String(self.count)]
+        var params = ["q": q, "result_type": "recent", "count": String(self.count)]
         if self.maxIdStr != "" {
             params["max_id"] = self.maxIdStr
         }
@@ -69,7 +78,7 @@ class TimelineViewController: BaseTweetViewController {
                 self.maxIdStr = ""
                 // TODO: show screen for no unread tweets
                 if self.tweets.count == 0 {
-                
+                    self.updateTitle()
                 }
             }else{
                 // continue to load until all done
@@ -82,12 +91,13 @@ class TimelineViewController: BaseTweetViewController {
                 self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_close", comment: ""), style: .Cancel, handler: nil))
                 self.presentViewController(self.alert!, animated: true, completion: nil)
                 errcb()
+                self.updateTitle()
         })
     }
     
     func updateTitle(){
         if self.unreadCount == 0 {
-            self.navigationItem.title = NSLocalizedString("stock_title", comment: "")
+            self.navigationItem.title = NSLocalizedString("stock_title_no_articles", comment: "")
         }else{
             self.navigationItem.title =  NSLocalizedString("stock_title", comment: "") + " (" + String(self.unreadCount) + ")"
         }
@@ -142,11 +152,13 @@ extension TimelineViewController: StockedTableViewCellDelegate {
                     self.tableView!.reloadData()
                     // set reload flag to fav view
                     self.onFavorite?()
-
-//                    cell.moveToLeft()
-//                    self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
-//                    self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_close", comment: ""), style: .Cancel, handler: nil))
-//                    self.presentViewController(self.alert!, animated: true, completion: nil)
+                    // skip show an error on code 139 (http response 403) because it is already favorited
+                    if error.code != 139 {
+                        cell.moveToLeft()
+                        self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
+                        self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_close", comment: ""), style: .Cancel, handler: nil))
+                        self.presentViewController(self.alert!, animated: true, completion: nil)
+                    }
             })
         }
     }
