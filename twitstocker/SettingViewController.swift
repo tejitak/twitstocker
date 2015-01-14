@@ -19,7 +19,7 @@ class SettingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "設定"
+        self.title = NSLocalizedString("setting_title", comment: "")
         self.view.backgroundColor = Constants.Theme.base()
         
         // 閉じるボタン

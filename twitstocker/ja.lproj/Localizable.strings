@@ -1,0 +1,16 @@
+/* 
+  Localizable.strings
+  twitstocker
+
+  Created by TEJIMA TAKUYA on 2015/01/14.
+  Copyright (c) 2015年 Takuya Tejima. All rights reserved.
+*/
+"common_app_name" = "TwitStocker";
+"common_ok" = "OK";
+"common_cancel" = "キャンセル";
+
+"stock_title" = "未読記事";
+
+"favorite_title" = "お気に入り";
+
+"setting_title" = "設定";

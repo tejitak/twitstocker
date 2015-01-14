@@ -18,7 +18,6 @@
 		009D1E311A4F9EE5007C28C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */; };
 		009D1E351A4F9EE5007C28C7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E341A4F9EE5007C28C7 /* FavoriteViewController.swift */; };
 		009D1E3A1A4F9EE5007C28C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 009D1E391A4F9EE5007C28C7 /* Images.xcassets */; };
-		009D1E3D1A4F9EE5007C28C7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 009D1E3B1A4F9EE5007C28C7 /* LaunchScreen.xib */; };
 		009D1E491A4F9EE5007C28C7 /* twitstockerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E481A4F9EE5007C28C7 /* twitstockerTests.swift */; };
 		009D1E561A4FA182007C28C7 /* TwitterKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 009D1E531A4FA182007C28C7 /* TwitterKit.framework */; };
 		009D1E571A4FA182007C28C7 /* TwitterKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 009D1E541A4FA182007C28C7 /* TwitterKitResources.bundle */; };
@@ -29,6 +28,7 @@
 		00A36E931A50339800B15D10 /* BaseTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36E921A50339800B15D10 /* BaseTweetViewController.swift */; };
 		00A36E951A50358400B15D10 /* StockedTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */; };
 		00EFBB301A5AB06C001D9A03 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EFBB2F1A5AB06C001D9A03 /* SettingViewController.swift */; };
+		FBD52CE61A6685C00010B6DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBD52CE81A6685C00010B6DC /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +55,6 @@
 		009D1E301A4F9EE5007C28C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		009D1E341A4F9EE5007C28C7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		009D1E391A4F9EE5007C28C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		009D1E3C1A4F9EE5007C28C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		009D1E421A4F9EE5007C28C7 /* twitstockerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = twitstockerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		009D1E471A4F9EE5007C28C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		009D1E481A4F9EE5007C28C7 /* twitstockerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = twitstockerTests.swift; sourceTree = "<group>"; };
@@ -68,6 +67,8 @@
 		00A36E921A50339800B15D10 /* BaseTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTweetViewController.swift; sourceTree = "<group>"; };
 		00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockedTweetTableViewCell.swift; sourceTree = "<group>"; };
 		00EFBB2F1A5AB06C001D9A03 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		FBD52CEA1A6685F20010B6DC /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		FBD52CEC1A6686410010B6DC /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,7 +130,6 @@
 				0037CD0E1A62855B0089EA42 /* twitstocker.xcdatamodeld */,
 				009D1E341A4F9EE5007C28C7 /* FavoriteViewController.swift */,
 				009D1E391A4F9EE5007C28C7 /* Images.xcassets */,
-				009D1E3B1A4F9EE5007C28C7 /* LaunchScreen.xib */,
 				009D1E2E1A4F9EE5007C28C7 /* Supporting Files */,
 				009D1E591A4FA1D8007C28C7 /* LoginViewController.swift */,
 				009D1E5B1A4FA23F007C28C7 /* TwitterAPI.swift */,
@@ -142,6 +142,7 @@
 				008636731A62B02F009D5EE7 /* SettingStore.swift */,
 				008636751A62C320009D5EE7 /* FavoriteTableViewCell.swift */,
 				005678581A657A1A004F5B62 /* Constants.swift */,
+				FBD52CE81A6685C00010B6DC /* Localizable.strings */,
 			);
 			path = twitstocker;
 			sourceTree = "<group>";
@@ -236,6 +237,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 009D1E221A4F9EE4007C28C7;
 			productRefGroup = 009D1E2C1A4F9EE5007C28C7 /* Products */;
@@ -254,8 +256,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				009D1E571A4FA182007C28C7 /* TwitterKitResources.bundle in Resources */,
+				FBD52CE61A6685C00010B6DC /* Localizable.strings in Resources */,
 				001AAF701A4FF4FE004EB54E /* Default-568h@2x.png in Resources */,
-				009D1E3D1A4F9EE5007C28C7 /* LaunchScreen.xib in Resources */,
 				009D1E3A1A4F9EE5007C28C7 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,12 +329,13 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		009D1E3B1A4F9EE5007C28C7 /* LaunchScreen.xib */ = {
+		FBD52CE81A6685C00010B6DC /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				009D1E3C1A4F9EE5007C28C7 /* Base */,
+				FBD52CEA1A6685F20010B6DC /* ja */,
+				FBD52CEC1A6686410010B6DC /* en */,
 			);
-			name = LaunchScreen.xib;
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

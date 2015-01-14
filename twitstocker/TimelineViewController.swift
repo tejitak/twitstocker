@@ -20,7 +20,7 @@ class TimelineViewController: BaseTweetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "未読記事"
+        self.title = NSLocalizedString("stock_title", comment: "")
         
         prototypeCell = TWTRTweetTableViewCell(style: .Default, reuseIdentifier: "cell")
         

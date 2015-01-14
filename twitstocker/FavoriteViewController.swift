@@ -18,7 +18,7 @@ class FavoriteViewController: BaseTweetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "お気に入り"
+        self.title = NSLocalizedString("favorite_title", comment: "")
         
         prototypeCell = TWTRTweetTableViewCell(style: .Default, reuseIdentifier: "cell")
         
