@@ -36,7 +36,7 @@ class SettingViewController: UIViewController {
         let rowHeight: CGFloat = 40.0
         let rowPaddingTop: CGFloat = 4.0
         let rowPaddingLeft: CGFloat = 20.0
-        let inputWidth: CGFloat = 200.0
+        let inputWidth: CGFloat = 160.0
         let switchWidth: CGFloat = 60.0
         
         let hashtagLabel: UILabel = UILabel(frame: CGRectMake(rowPaddingLeft, rowPaddingTop, width - inputWidth - rowPaddingLeft * 2, rowHeight))
@@ -45,6 +45,7 @@ class SettingViewController: UIViewController {
         hashtagInput.borderStyle = UITextBorderStyle.None
         hashtagInput.placeholder = NSLocalizedString("setting_hashtag_input_placeholder", comment: "")
         hashtagInput.text = SettingStore.sharedInstance.getHashtag()
+        hashtagInput.delegate = self
         self.hashtagInput = hashtagInput
         
         let container1 = UIView()
@@ -148,5 +149,12 @@ class SettingViewController: UIViewController {
             }
         }
         close(reload)
+    }
+}
+
+extension SettingViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {
+        textField.resignFirstResponder()
+        return true;
     }
 }
