@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
             } else {
                 // show an error
                 self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
-                self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
+                self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_close", comment: ""), style: .Cancel, handler: nil))
                 self.presentViewController(self.alert!, animated: true, completion: nil)
             }
         })

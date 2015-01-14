@@ -18,7 +18,7 @@ class FavoriteViewController: BaseTweetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = NSLocalizedString("favorite_title", comment: "")
+        self.navigationItem.title = NSLocalizedString("favorite_title", comment: "")
         
         prototypeCell = TWTRTweetTableViewCell(style: .Default, reuseIdentifier: "cell")
         
@@ -52,7 +52,7 @@ class FavoriteViewController: BaseTweetViewController {
             }, error: {
                 error in
                 self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
-                self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
+                self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_close", comment: ""), style: .Cancel, handler: nil))
                 self.presentViewController(self.alert!, animated: true, completion: nil)
                 errcb()
         })
@@ -66,11 +66,11 @@ extension FavoriteViewController: FavoriteTableViewCellDelegate {
             self.submitUnfavorite(index, cell: cell)
         } else {
             // show confirmation
-            self.alert = UIAlertController(title: "お気に入りをやめますか？", message: nil, preferredStyle: .Alert)
-            self.alert!.addAction(UIAlertAction(title: "OK", style: .Destructive) { action in
+            self.alert = UIAlertController(title: NSLocalizedString("favorite_confirm_stop", comment: ""), message: nil, preferredStyle: .Alert)
+            self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_ok", comment: ""), style: .Destructive) { action in
                 self.submitUnfavorite(index, cell: cell)
             })
-            self.alert!.addAction(UIAlertAction(title: "キャンセル", style: .Cancel) { action in
+            self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_cancel", comment: ""), style: .Cancel) { action in
                 cell.moveToRight()
             })
             self.presentViewController(self.alert!, animated: true, completion: nil)
@@ -83,7 +83,7 @@ extension FavoriteViewController: FavoriteTableViewCellDelegate {
             var params = ["id": self.tweets[index].tweetID]
             TwitterAPI.unfavoriteTweet(params, success: {
                 twttrs in
-                self.view.makeToast(message: "お気に入りをやめました", duration: 2, position: HRToastPositionTop)
+                self.view.makeToast(message: NSLocalizedString("favorite_alert_stop_done", comment: ""), duration: 2, position: HRToastPositionTop)
                 // remove from view
                 var tweet = self.tweets[index]
                 // remove registered id from local storage
@@ -98,7 +98,7 @@ extension FavoriteViewController: FavoriteTableViewCellDelegate {
                     error in
                     cell.moveToRight()
                     self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
-                    self.alert!.addAction(UIAlertAction(title: "閉じる", style: .Cancel, handler: nil))
+                    self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_close", comment: ""), style: .Cancel, handler: nil))
                     self.presentViewController(self.alert!, animated: true, completion: nil)
             })
         }

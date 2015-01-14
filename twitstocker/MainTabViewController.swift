@@ -34,12 +34,10 @@ class MainTabViewController: UITabBarController {
         favoriteView.onUnFavorite = {() -> () in
             self.timelineView.needReload = true
         }
-        
-        timelineView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Recents, tag: 1)
-        favoriteView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 2)
+        timelineView.tabBarItem = UITabBarItem(title: NSLocalizedString("tabbar-article", comment: ""), image: UIImage(named: "tabbar-article.png"), selectedImage: UIImage(named: "tabbar-article.png"))
+        favoriteView.tabBarItem = UITabBarItem(title: NSLocalizedString("tabbar-favorite", comment: ""), image: UIImage(named: "tabbar-favorite.png"), selectedImage: UIImage(named: "tabbar-favorite.png"))
         
         var timelineNavigationController = UINavigationController(rootViewController: timelineView)
-//        timelineNavigationController.navigationBar.barTintColor = UIColor.whiteColor()
         var favoriteNavigationController = UINavigationController(rootViewController: favoriteView)
         self.setViewControllers([timelineNavigationController, favoriteNavigationController], animated: false)
     }

@@ -21,8 +21,7 @@ class BaseTweetViewController: UIViewController {
     
     // count per an API request
     let count:Int = 20
-    // if search hash tag is empty, filter with tweets including URL
-//    let searchHashTag:String = "#あとで読む"
+    // if search hash tag is empty, filter with tweets including URL (e.g. #readlater)
     let searchHashTag:String = ""
     let excludeHashTag:String = ""
     
