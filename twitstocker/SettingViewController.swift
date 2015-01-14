@@ -20,27 +20,44 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         
         self.title = "設定"
-        self.view.backgroundColor = UIColor.whiteColor()
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "閉じる", style: .Plain, target: self, action: "onClickClose")
+        self.view.backgroundColor = Constants.Theme.base()
+        
+        // 閉じるボタン
+        var closeBtn:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        closeBtn.addTarget(self, action: "onClickClose", forControlEvents: UIControlEvents.TouchUpInside)
+        closeBtn.frame = CGRectMake(0, 0, 20, 20)
+        closeBtn.setImage(UIImage(named: "close-50.png"), forState: .Normal)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: closeBtn)
         
         let width = self.view.frame.size.width
         let height = self.view.frame.size.height
         
         // hashtag
-        let hashtagLabel: UILabel = UILabel(frame: CGRectMake(20, 80, width - 40, 40))
-        hashtagLabel.text = "ハッシュタグ"
-        self.view.addSubview(hashtagLabel)
+        let rowHeight: CGFloat = 40.0
+        let rowPaddingTop: CGFloat = 4.0
+        let rowPaddingLeft: CGFloat = 20.0
+        let inputWidth: CGFloat = 200.0
+        let switchWidth: CGFloat = 60.0
         
-        let hashtagInput = UITextField(frame: CGRectMake(20, 120, width - 40, 40))
-        hashtagInput.borderStyle = UITextBorderStyle.RoundedRect
+        let hashtagLabel: UILabel = UILabel(frame: CGRectMake(rowPaddingLeft, rowPaddingTop, width - inputWidth - rowPaddingLeft * 2, rowHeight))
+        hashtagLabel.text = "ハッシュタグ"
+        let hashtagInput = UITextField(frame: CGRectMake(width - inputWidth - rowPaddingLeft, rowPaddingTop, inputWidth, rowHeight))
+        hashtagInput.borderStyle = UITextBorderStyle.None
         hashtagInput.placeholder = "#あとで読む"
         hashtagInput.text = SettingStore.sharedInstance.getHashtag()
         self.hashtagInput = hashtagInput
-        self.view.addSubview(hashtagInput)
         
-        let hashtagDescription: UILabel = UILabel(frame: CGRectMake(20, 170, width - 40, 0))
-        hashtagDescription.text = "設定したハッシュタグを含むツイートを表示し、空欄の場合はURLを含むツイートを表示します\n\n※Twitter Search APIの制限のため、表示されるのは約2週間以内のツイートです"
+        let container1 = UIView()
+        container1.backgroundColor = UIColor.whiteColor()
+        container1.frame = CGRectMake(0, 100, width, rowHeight + rowPaddingTop * 2)
+        container1.addSubview(hashtagLabel)
+        container1.addSubview(hashtagInput)
+        self.view.addSubview(container1)
+        
+        let hashtagDescription: UILabel = UILabel(frame: CGRectMake(rowPaddingLeft, 160, width - rowPaddingLeft * 2, 0))
+        hashtagDescription.text = "設定したハッシュタグを含むツイートを表示し、空欄の場合はURLを含むツイートを表示します\n\n※Twitter Search APIの制限により最大約2週間以内のツイートが表示されます。"
         hashtagDescription.font = UIFont.systemFontOfSize(12)
+        hashtagDescription.textColor = Constants.Theme.gray()
         hashtagDescription.numberOfLines = 0
         hashtagDescription.textAlignment = NSTextAlignment.Left
         hashtagDescription.sizeToFit()
@@ -48,33 +65,37 @@ class SettingViewController: UIViewController {
         self.view.addSubview(hashtagDescription)
         
         // no confirm
-        let noConfirmLabel: UILabel = UILabel(frame: CGRectMake(20, 260, width - 120, 40))
+        let noConfirmLabel: UILabel = UILabel(frame: CGRectMake(rowPaddingLeft, rowPaddingTop, width - switchWidth - rowPaddingLeft, rowHeight))
         noConfirmLabel.text = "スワイプ時の確認非表示"
-        self.view.addSubview(noConfirmLabel)
-        let noConfirmSwitch = UISwitch(frame: CGRectMake(width - 80, 264, 100, 40))
+        let noConfirmSwitch = UISwitch(frame: CGRectMake(width - switchWidth - rowPaddingLeft, rowPaddingTop + 4, switchWidth, rowHeight))
         noConfirmSwitch.on = SettingStore.sharedInstance.isNoConfirm()
         self.noConfirmSwitch = noConfirmSwitch
-        self.view.addSubview(noConfirmSwitch)
+        let container2 = UIView()
+        container2.backgroundColor = UIColor.whiteColor()
+        container2.frame = CGRectMake(0, 260, width, rowHeight + rowPaddingTop * 2)
+        container2.addSubview(noConfirmLabel)
+        container2.addSubview(noConfirmSwitch)
+        self.view.addSubview(container2)
         
         // reset read data
-        let restBtn: UIButton = UIButton(frame: CGRectMake(20, 330, width - 40, 40))
+        let restBtn: UIButton = UIButton(frame: CGRectMake(rowPaddingLeft, 340, width - rowPaddingLeft * 2, rowHeight))
         restBtn.setTitle("既読データをリセット", forState: UIControlState.Normal)
-        restBtn.backgroundColor = UIColor.redColor()
+        restBtn.backgroundColor = Constants.Theme.reset()
         restBtn.layer.cornerRadius = 8
         restBtn.addTarget(self, action: "onClickResetReadData", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(restBtn)
         
         // logout
-        let logoutBtn: UIButton = UIButton(frame: CGRectMake(20, 390, width - 40, 40))
+        let logoutBtn: UIButton = UIButton(frame: CGRectMake(rowPaddingLeft, 400, width - rowPaddingLeft * 2, rowHeight))
         logoutBtn.setTitle("Twitterログアウト", forState: UIControlState.Normal)
-        logoutBtn.backgroundColor = UIColor.blueColor()
+        logoutBtn.backgroundColor = Constants.Theme.twitter()
         logoutBtn.layer.cornerRadius = 8
         logoutBtn.addTarget(self, action: "onClickLogout", forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(logoutBtn)
         
         // footer
-        let footer: UILabel = UILabel(frame: CGRectMake(20, height - 60, width - 40, 40))
-        footer.text = "TwitStocker version 1.0, 2015 created by tejitak"
+        let footer: UILabel = UILabel(frame: CGRectMake(rowPaddingLeft * 2, height - 50, width - rowPaddingLeft * 4, rowHeight))
+        footer.text = "TwitStocker version" + Constants.Product.version() + ", Copyright © 2015 Tejitak"
         footer.adjustsFontSizeToFitWidth = true
         self.view.addSubview(footer)
     }

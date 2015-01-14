@@ -21,7 +21,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
 
         let width = self.view.frame.maxX, height = self.view.frame.maxY
-        self.view.backgroundColor = Constants.Theme.color()
+        self.view.backgroundColor = Constants.Theme.concept()
         scrollView = UIScrollView(frame: self.view.frame)
 
         scrollView.showsHorizontalScrollIndicator = false;
@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         // create all images
         for var i = 0; i < self.pageSize; i++ {
             let myLabel:UILabel = UILabel(frame: CGRectMake(CGFloat(i) * width + width/2 - 40, height/2 - 40, 80, 80))
-            myLabel.backgroundColor = UIColor.blackColor()
+            myLabel.backgroundColor = Constants.Theme.reset()
             myLabel.textColor = UIColor.whiteColor()
             myLabel.textAlignment = NSTextAlignment.Center
             myLabel.layer.masksToBounds = true

@@ -39,7 +39,11 @@ class BaseTweetViewController: UIViewController {
         tableView.addSubview(refreshControl)
         
         // nav right item button
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "設定", style: .Plain, target: self, action: "onClickSetting")
+        var settingBtn:UIButton = UIButton.buttonWithType(UIButtonType.Custom) as UIButton
+        settingBtn.addTarget(self, action: "onClickSetting", forControlEvents: UIControlEvents.TouchUpInside)
+        settingBtn.frame = CGRectMake(0, 0, 24, 24)
+        settingBtn.setImage(UIImage(named: "settings-50.png"), forState: .Normal)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: settingBtn)
     }
     
     func refresh() {

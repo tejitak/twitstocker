@@ -39,11 +39,8 @@ class MainTabViewController: UITabBarController {
         favoriteView.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Favorites, tag: 2)
         
         var timelineNavigationController = UINavigationController(rootViewController: timelineView)
-//        timelineNavigationController.navigationBar.tintColor = UIColor.whiteColor()
-//        timelineNavigationController.navigationBar.titleTextAttributes = UIColor.whiteColor()
-//        timelineNavigationController.navigationBar.barStyle = Constants.Theme.color()
+//        timelineNavigationController.navigationBar.barTintColor = UIColor.whiteColor()
         var favoriteNavigationController = UINavigationController(rootViewController: favoriteView)
-//        favoriteNavigationController.navigationBar.backgroundColor = Constants.Theme.color()
         self.setViewControllers([timelineNavigationController, favoriteNavigationController], animated: false)
     }
     

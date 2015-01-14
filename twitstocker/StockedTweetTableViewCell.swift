@@ -51,6 +51,7 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
     }
     
     func onLeftSwipe() {
+        self.backgroundView?.backgroundColor = Constants.Theme.concept()
         UIView.animateWithDuration(0.1, animations: {
             let size   = self.contentView.frame.size
             let origin = self.contentView.frame.origin
@@ -68,6 +69,7 @@ class StockedTweetTableViewCell : TWTRTweetTableViewCell {
     }
     
     func onRightSwipe() {
+        self.backgroundView?.backgroundColor = Constants.Theme.twitter()
         UIView.animateWithDuration(0.1, animations: {
             let size   = self.contentView.frame.size
             let origin = self.contentView.frame.origin
