@@ -96,6 +96,7 @@ class SettingViewController: UIViewController {
         // footer
         let footer: UILabel = UILabel(frame: CGRectMake(rowPaddingLeft * 2, height - 50, width - rowPaddingLeft * 4, rowHeight))
         footer.text = "TwitStocker version" + Constants.Product.version() + ", Copyright © 2015 Tejitak"
+        footer.textColor = Constants.Theme.gray()
         footer.adjustsFontSizeToFitWidth = true
         self.view.addSubview(footer)
     }

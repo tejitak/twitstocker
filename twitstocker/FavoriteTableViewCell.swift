@@ -44,7 +44,7 @@ class FavoriteTableViewCell : TWTRTweetTableViewCell {
     }
     
     func onLeftSwipe() {
-        self.backgroundView?.backgroundColor = Constants.Theme.base()
+        self.backgroundView?.backgroundColor = Constants.Theme.concept()
         UIView.animateWithDuration(0.1, animations: {
             let size   = self.contentView.frame.size
             let origin = self.contentView.frame.origin

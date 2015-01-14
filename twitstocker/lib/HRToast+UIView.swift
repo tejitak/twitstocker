@@ -53,8 +53,10 @@ let HRToastShadowOpacity  : CGFloat   = 0.8
 let HRToastShadowRadius   : CGFloat   = 6.0
 let HRToastShadowOffset   : CGSize    = CGSizeMake(CGFloat(4.0), CGFloat(4.0))
 
-let HRToastOpacity        : CGFloat   = 0.8
+let HRToastOpacity        : CGFloat   = 0.6
 let HRToastCornerRadius   : CGFloat   = 10.0
+
+let HRToastColor = Constants.Theme.gray()
 
 var HRToastActivityView: UnsafePointer<UIView>    =   nil
 var HRToastTimer: UnsafePointer<NSTimer>          =   nil
@@ -138,13 +140,13 @@ extension UIView {
         
         var activityView = UIView(frame: CGRectMake(0, 0, HRToastActivityWidth, HRToastActivityHeight))
         activityView.center = self.centerPointForPosition(pos, toast: activityView)
-        activityView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(HRToastOpacity)
+        activityView.backgroundColor = HRToastColor.colorWithAlphaComponent(HRToastOpacity)
         activityView.alpha = 0.0
         activityView.autoresizingMask = (.FlexibleLeftMargin | .FlexibleTopMargin | .FlexibleRightMargin | .FlexibleBottomMargin)
         activityView.layer.cornerRadius = HRToastCornerRadius
         
         if HRToastDisplayShadow {
-            activityView.layer.shadowColor = UIColor.blackColor().CGColor
+            activityView.layer.shadowColor = HRToastColor.CGColor
             activityView.layer.shadowOpacity = Float(HRToastShadowOpacity)
             activityView.layer.shadowRadius = HRToastShadowRadius
             activityView.layer.shadowOffset = HRToastShadowOffset
@@ -250,10 +252,10 @@ extension UIView {
         var wrapperView = UIView()
         wrapperView.autoresizingMask = (.FlexibleLeftMargin | .FlexibleRightMargin | .FlexibleTopMargin | .FlexibleBottomMargin)
         wrapperView.layer.cornerRadius = HRToastCornerRadius
-        wrapperView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(HRToastOpacity)
+        wrapperView.backgroundColor = HRToastColor.colorWithAlphaComponent(HRToastOpacity)
         
         if HRToastDisplayShadow {
-            wrapperView.layer.shadowColor = UIColor.blackColor().CGColor
+            wrapperView.layer.shadowColor = HRToastColor.CGColor
             wrapperView.layer.shadowOpacity = Float(HRToastShadowOpacity)
             wrapperView.layer.shadowRadius = HRToastShadowRadius
             wrapperView.layer.shadowOffset = HRToastShadowOffset
