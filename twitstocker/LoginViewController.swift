@@ -15,7 +15,13 @@ class LoginViewController: UIViewController {
     var pageControl: UIPageControl!
     var scrollView: UIScrollView!
     
-    let pageSize = 3
+    let pageSize = 4
+    let titleH: CGFloat = 70.0
+    let controlH: CGFloat = 20.0
+    let twBtnH: CGFloat = 80.0
+    let imageW: CGFloat = 475
+    let imageH: CGFloat = 327
+    let paddingTop: CGFloat = 20.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +36,27 @@ class LoginViewController: UIViewController {
         scrollView.delegate = self
         scrollView.contentSize = CGSizeMake(CGFloat(self.pageSize) * width, 0)
         self.view.addSubview(scrollView)
-        // create all images
         for var i = 0; i < self.pageSize; i++ {
-            let myLabel:UILabel = UILabel(frame: CGRectMake(CGFloat(i) * width + width/2 - 40, height/2 - 40, 80, 80))
-            myLabel.backgroundColor = Constants.Theme.reset()
-            myLabel.textColor = UIColor.whiteColor()
-            myLabel.textAlignment = NSTextAlignment.Center
-            myLabel.layer.masksToBounds = true
-            myLabel.text = "Page\(i)"
-            myLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
-            myLabel.layer.cornerRadius = 40.0
-            scrollView.addSubview(myLabel)
+            // show title message
+            let x = CGFloat(i) * width
+//            let introTitle:UILabel = UILabel(frame: CGRectMake(x, height - titleH - imageH - twBtnH - paddingTop, width, titleH))
+            let margin = height - imageH - twBtnH - paddingTop * 2 - controlH
+            let introTitle:UILabel = UILabel(frame: CGRectMake(x + 10, paddingTop * 2 + controlH + (margin - titleH) / 2, width - 20, titleH))
+            introTitle.textColor = UIColor.whiteColor()
+            introTitle.textAlignment = NSTextAlignment.Center
+            introTitle.text = NSLocalizedString("tutorial_title_" + String(i + 1), comment: "")
+            introTitle.numberOfLines = 0
+            introTitle.lineBreakMode = NSLineBreakMode.ByWordWrapping
+            scrollView.addSubview(introTitle)
+            // show image
+            let diffW = (width - imageW) / 2
+            let imageView: UIImageView = UIImageView(frame: CGRectMake(x + diffW, height - imageH - twBtnH, imageW, imageH))
+            let image = UIImage(named: NSLocalizedString("tutorial_image_" + String(i + 1), comment: ""))
+            imageView.image = image
+            scrollView.addSubview(imageView)
         }
-        pageControl = UIPageControl(frame: CGRectMake(0, self.view.frame.maxY - 130, width, 50))
+//        pageControl = UIPageControl(frame: CGRectMake(0, height - controlH - imageH - twBtnH - titleH - paddingTop, width, controlH))
+        pageControl = UIPageControl(frame: CGRectMake(0, paddingTop * 2, width, controlH))
         pageControl.numberOfPages = self.pageSize
         pageControl.currentPage = 0
         pageControl.userInteractionEnabled = false
@@ -59,7 +73,7 @@ class LoginViewController: UIViewController {
                 self.presentViewController(self.alert!, animated: true, completion: nil)
             }
         })
-        logInButton.frame = CGRectMake(0, self.view.frame.maxY - 80, width, 80)
+        logInButton.frame = CGRectMake(0, self.view.frame.maxY - twBtnH, width, twBtnH)
         self.view.addSubview(logInButton)
     }
 }

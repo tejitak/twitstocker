@@ -47,6 +47,8 @@
 		001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewController.swift; sourceTree = "<group>"; };
 		001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		001F35BF1A638F3F002BC237 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HRToast+UIView.swift"; path = "twitstocker/lib/HRToast+UIView.swift"; sourceTree = SOURCE_ROOT; };
+		002853891A67EC5700E40856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0028538A1A68023400E40856 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0037CD0F1A62855B0089EA42 /* twitstocker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = twitstocker.xcdatamodel; sourceTree = "<group>"; };
 		0037CD111A629CC40089EA42 /* ReadStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStore.swift; sourceTree = "<group>"; };
 		005678581A657A1A004F5B62 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -72,7 +74,6 @@
 		FB37E2AF1A6752FE0061A1B5 /* URLTweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTweet.swift; sourceTree = "<group>"; };
 		FBBAC5021A675DBC0023E446 /* StockWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockWebViewController.swift; sourceTree = "<group>"; };
 		FBD52CEA1A6685F20010B6DC /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
-		FBD52CEC1A6686410010B6DC /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,7 +342,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				FBD52CEA1A6685F20010B6DC /* ja */,
-				FBD52CEC1A6686410010B6DC /* en */,
+				002853891A67EC5700E40856 /* Base */,
+				0028538A1A68023400E40856 /* en */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
