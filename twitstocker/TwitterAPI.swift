@@ -25,7 +25,7 @@ class TwitterAPI {
                     options: nil,
                     error: &jsonError)
                 if let jsonArray = json as? NSArray {
-                    tweets(TWTRTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
+                    tweets(URLTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
                 }
             } else {
                 error(err)
@@ -45,16 +45,11 @@ class TwitterAPI {
                 if let top = json as? NSDictionary {
                     var list: [TWTRTweet] = []
                     if let statuses = top["statuses"] as? NSArray {
-                        list = TWTRTweet.tweetsWithJSONArray(statuses) as [TWTRTweet]
+                        list = URLTweet.tweetsWithJSONArray(statuses) as [TWTRTweet]
                     }
-//                    if let metadata = top["search_metadata"] as? NSDictionary {
-//                        if let next_results = metadata["next_results"] as? String {
-//                            nextTimelineURL = next_results
-//                        }
-//                    }
                     tweets(list)
                 }else if let jsonArray = json as? NSArray {
-                    tweets(TWTRTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
+                    tweets(URLTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
                 }
             } else {
                 error(err)
@@ -71,7 +66,7 @@ class TwitterAPI {
                     options: nil,
                     error: &jsonError)
                 if let jsonArray = json as? NSArray {
-                    tweets(TWTRTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
+                    tweets(URLTweet.tweetsWithJSONArray(jsonArray) as [TWTRTweet])
                 }
             } else {
                 error(err)

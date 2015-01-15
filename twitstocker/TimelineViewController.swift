@@ -166,11 +166,11 @@ extension TimelineViewController: StockedTableViewCellDelegate {
     func readTweet(cell: StockedTweetTableViewCell) {
         let index: Int = cell.tag
         if SettingStore.sharedInstance.isNoConfirm() {
-            self.submitRead(index, cell: cell)
+            self.submitRead(index)
         }else{
             self.alert = UIAlertController(title: NSLocalizedString("stock_confirm_read", comment: ""), message: nil, preferredStyle: .Alert)
             self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_ok", comment: ""), style: .Destructive) { action in
-                self.submitRead(index, cell: cell)
+                self.submitRead(index)
             })
             self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_cancel", comment: ""), style: .Cancel) { action in
                 cell.moveToRight()
@@ -179,7 +179,7 @@ extension TimelineViewController: StockedTableViewCellDelegate {
         }
     }
         
-    func submitRead(index: Int, cell: StockedTweetTableViewCell) {
+    func submitRead(index: Int) {
         if tweets.count > index {
             self.view.makeToast(message: NSLocalizedString("stock_alert_read_done", comment: ""), duration: 2, position: HRToastPositionTop)
             var tweet = self.tweets[index]
@@ -195,13 +195,8 @@ extension TimelineViewController: StockedTableViewCellDelegate {
 
 extension TimelineViewController : UITableViewDataSource {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as StockedTweetTableViewCell
-        if tweets.count > indexPath.row {
-            cell.delegate = self
-            let tweet = tweets[indexPath.row]
-            cell.tag = indexPath.row
-            cell.configureWithTweet(tweet)
-        }
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath) as StockedTweetTableViewCell
+        cell.delegate = self
         return cell
     }
 }

@@ -28,6 +28,8 @@
 		00A36E931A50339800B15D10 /* BaseTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36E921A50339800B15D10 /* BaseTweetViewController.swift */; };
 		00A36E951A50358400B15D10 /* StockedTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */; };
 		00EFBB301A5AB06C001D9A03 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EFBB2F1A5AB06C001D9A03 /* SettingViewController.swift */; };
+		FB37E2B01A6752FE0061A1B5 /* URLTweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37E2AF1A6752FE0061A1B5 /* URLTweet.swift */; };
+		FBBAC5031A675DBC0023E446 /* StockWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBAC5021A675DBC0023E446 /* StockWebViewController.swift */; };
 		FBD52CE61A6685C00010B6DC /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = FBD52CE81A6685C00010B6DC /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +69,8 @@
 		00A36E921A50339800B15D10 /* BaseTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTweetViewController.swift; sourceTree = "<group>"; };
 		00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockedTweetTableViewCell.swift; sourceTree = "<group>"; };
 		00EFBB2F1A5AB06C001D9A03 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		FB37E2AF1A6752FE0061A1B5 /* URLTweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTweet.swift; sourceTree = "<group>"; };
+		FBBAC5021A675DBC0023E446 /* StockWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockWebViewController.swift; sourceTree = "<group>"; };
 		FBD52CEA1A6685F20010B6DC /* ja */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		FBD52CEC1A6686410010B6DC /* en */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -143,6 +147,8 @@
 				008636751A62C320009D5EE7 /* FavoriteTableViewCell.swift */,
 				005678581A657A1A004F5B62 /* Constants.swift */,
 				FBD52CE81A6685C00010B6DC /* Localizable.strings */,
+				FB37E2AF1A6752FE0061A1B5 /* URLTweet.swift */,
+				FBBAC5021A675DBC0023E446 /* StockWebViewController.swift */,
 			);
 			path = twitstocker;
 			sourceTree = "<group>";
@@ -301,9 +307,11 @@
 				008636761A62C320009D5EE7 /* FavoriteTableViewCell.swift in Sources */,
 				009D1E5C1A4FA23F007C28C7 /* TwitterAPI.swift in Sources */,
 				00EFBB301A5AB06C001D9A03 /* SettingViewController.swift in Sources */,
+				FB37E2B01A6752FE0061A1B5 /* URLTweet.swift in Sources */,
 				001F35C01A638F3F002BC237 /* HRToast+UIView.swift in Sources */,
 				001AAF6E1A4FE466004EB54E /* MainTabViewController.swift in Sources */,
 				008636741A62B02F009D5EE7 /* SettingStore.swift in Sources */,
+				FBBAC5031A675DBC0023E446 /* StockWebViewController.swift in Sources */,
 				0037CD101A62855B0089EA42 /* twitstocker.xcdatamodeld in Sources */,
 				00A36E951A50358400B15D10 /* StockedTweetTableViewCell.swift in Sources */,
 				009D1E5E1A4FA257007C28C7 /* TimelineViewController.swift in Sources */,

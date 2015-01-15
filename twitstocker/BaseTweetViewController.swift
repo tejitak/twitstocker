@@ -84,6 +84,8 @@ extension BaseTweetViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as TWTRTweetTableViewCell
         if tweets.count > indexPath.row {
+            // for TWTRTweetViewDelegate to handling on select
+            cell.tweetView.delegate = self
             let tweet = tweets[indexPath.row]
             cell.tag = indexPath.row
             cell.configureWithTweet(tweet)
@@ -107,5 +109,31 @@ extension BaseTweetViewController : UITableViewDelegate {
         } else {
             return tableView.estimatedRowHeight
         }
+    }
+}
+
+extension BaseTweetViewController : TWTRTweetViewDelegate {
+    // tap a cell
+    func tweetView(tweetView: TWTRTweetView!, didSelectTweet tweet: TWTRTweet!) {
+        var url: String = ""
+        if let urlTweet = tweet as? URLTweet {
+            url = urlTweet.url
+        }
+        if url == "" {
+            return
+        }
+        self.openWebView(NSURL(string: url)!)
+    }
+    
+    // tap a link in cell
+    func tweetView(tweetView: TWTRTweetView!, didTapURL url: NSURL!) {
+        self.openWebView(url)
+    }
+    
+    func openWebView(url: NSURL){
+        let webviewController = StockWebViewController()
+        webviewController.url = url
+        webviewController.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(webviewController, animated: true)
     }
 }

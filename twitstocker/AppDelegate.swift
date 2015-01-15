@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         UINavigationBar.appearance().barTintColor = Constants.Theme.concept()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         UINavigationBar.appearance().backgroundColor = UIColor.whiteColor()
         UITabBar.appearance().tintColor = Constants.Theme.twitter()
