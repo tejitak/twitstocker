@@ -39,7 +39,6 @@ class StockWebViewController : UIViewController, UIWebViewDelegate, UIActionShee
     override func loadView() {
         super.loadView()
         let spacer: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: .FlexibleSpace, target: nil, action: nil)
-//        self.backButton = UIBarButtonItem(title: "Back", style: .Plain, target: self, action: Selector("back"))
         self.backButton = UIBarButtonItem(image: UIImage(named: "toolbar_back"), style: .Plain, target: self, action: Selector("back"))
         self.forwardButton = UIBarButtonItem(image: UIImage(named: "toolbar_forward"), style: .Plain, target: self, action: Selector("forward"))
         self.refreshButton = UIBarButtonItem(image: UIImage(named: "toolbar_reload"), style: .Plain, target: self, action: Selector("reload"))
@@ -90,14 +89,14 @@ class StockWebViewController : UIViewController, UIWebViewDelegate, UIActionShee
     }
     
     func alertController() {
-        let actionSheet: UIAlertController = UIAlertController(title: "", message: "Open in...", preferredStyle: .ActionSheet)
-        let otherAction1: UIAlertAction = UIAlertAction(title: "Safari", style: UIAlertActionStyle.Default, handler: { action1 in
+        let actionSheet: UIAlertController = UIAlertController(title: "", message: NSLocalizedString("webview_toolbar_open_in", comment: ""), preferredStyle: .ActionSheet)
+        let otherAction1: UIAlertAction = UIAlertAction(title: NSLocalizedString("webview_toolbar_safari", comment: ""), style: UIAlertActionStyle.Default, handler: { action1 in
             if let req = self.webView.request? {
                 let url: NSURL = req.URL
                 UIApplication.sharedApplication().openURL(url)
             }
         })
-        let cancelAction: UIAlertAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: { cancel in })
+        let cancelAction: UIAlertAction = UIAlertAction(title: NSLocalizedString("common_cancel", comment: ""), style: UIAlertActionStyle.Cancel, handler: { cancel in })
         actionSheet.addAction(otherAction1)
         actionSheet.addAction(cancelAction)
         self.presentViewController(actionSheet, animated: true, completion: nil)
@@ -105,10 +104,10 @@ class StockWebViewController : UIViewController, UIWebViewDelegate, UIActionShee
     
     func actionSheet() {
         let actionSheet: UIActionSheet = UIActionSheet()
-        actionSheet.title = "Open in..."
+        actionSheet.title = NSLocalizedString("webview_toolbar_open_in", comment: "")
         actionSheet.delegate = self
-        actionSheet.addButtonWithTitle("Safari")
-        actionSheet.addButtonWithTitle("Cancel")
+        actionSheet.addButtonWithTitle(NSLocalizedString("webview_toolbar_safari", comment: ""))
+        actionSheet.addButtonWithTitle(NSLocalizedString("common_cancel", comment: ""))
         actionSheet.cancelButtonIndex = 1
         actionSheet.showFromToolbar(self.toolBar)
     }
@@ -127,7 +126,6 @@ class StockWebViewController : UIViewController, UIWebViewDelegate, UIActionShee
     }
     
     func webViewDidStartLoad(webView: UIWebView!) {
-//        self.view.makeToastActivity()
         self.backButton.enabled = self.webView.canGoBack
         self.forwardButton.enabled = self.webView.canGoForward
         self.refreshButton.enabled = true
