@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6724" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
     </dependencies>
@@ -10,17 +10,25 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TwitStocker" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hYQ-KS-1IH">
-                    <rect key="frame" x="105" y="72" width="270" height="90"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="37"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch" translatesAutoresizingMaskIntoConstraints="NO" id="SrC-ns-cbS">
+                    <rect key="frame" x="114" y="116" width="253" height="248"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="253" id="0Yb-jK-eLs"/>
+                        <constraint firstAttribute="height" constant="248" id="C8z-qg-Ab0"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.40784313725490196" green="0.76078431372549016" blue="0.62352941176470589" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="SrC-ns-cbS" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="EUg-Zh-3Nw"/>
+                <constraint firstItem="SrC-ns-cbS" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="wWX-wJ-Yjw"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="404" y="445"/>
         </view>
     </objects>
+    <resources>
+        <image name="launch" width="256" height="256"/>
+    </resources>
 </document>
