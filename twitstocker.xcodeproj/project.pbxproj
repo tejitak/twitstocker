@@ -27,6 +27,7 @@
 		009D1E5E1A4FA257007C28C7 /* TimelineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009D1E5D1A4FA257007C28C7 /* TimelineViewController.swift */; };
 		00A36E931A50339800B15D10 /* BaseTweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36E921A50339800B15D10 /* BaseTweetViewController.swift */; };
 		00A36E951A50358400B15D10 /* StockedTweetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */; };
+		00B375CD1A6897AB00A86E1F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00B375CC1A6897AB00A86E1F /* LaunchScreen.xib */; };
 		00EFBB301A5AB06C001D9A03 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00EFBB2F1A5AB06C001D9A03 /* SettingViewController.swift */; };
 		FB37E2B01A6752FE0061A1B5 /* URLTweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB37E2AF1A6752FE0061A1B5 /* URLTweet.swift */; };
 		FBBAC5031A675DBC0023E446 /* StockWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBBAC5021A675DBC0023E446 /* StockWebViewController.swift */; };
@@ -70,6 +71,7 @@
 		009D1E5D1A4FA257007C28C7 /* TimelineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineViewController.swift; sourceTree = "<group>"; };
 		00A36E921A50339800B15D10 /* BaseTweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTweetViewController.swift; sourceTree = "<group>"; };
 		00A36E941A50358400B15D10 /* StockedTweetTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockedTweetTableViewCell.swift; sourceTree = "<group>"; };
+		00B375CC1A6897AB00A86E1F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		00EFBB2F1A5AB06C001D9A03 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		FB37E2AF1A6752FE0061A1B5 /* URLTweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLTweet.swift; sourceTree = "<group>"; };
 		FBBAC5021A675DBC0023E446 /* StockWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StockWebViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				FBD52CE81A6685C00010B6DC /* Localizable.strings */,
 				FB37E2AF1A6752FE0061A1B5 /* URLTweet.swift */,
 				FBBAC5021A675DBC0023E446 /* StockWebViewController.swift */,
+				00B375CC1A6897AB00A86E1F /* LaunchScreen.xib */,
 			);
 			path = twitstocker;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00B375CD1A6897AB00A86E1F /* LaunchScreen.xib in Resources */,
 				009D1E571A4FA182007C28C7 /* TwitterKitResources.bundle in Resources */,
 				FBD52CE61A6685C00010B6DC /* Localizable.strings in Resources */,
 				001AAF701A4FF4FE004EB54E /* Default-568h@2x.png in Resources */,
