@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "009D1E2A1A4F9EE4007C28C7"
-               BuildableName = "twitstocker.app"
-               BlueprintName = "twitstocker"
-               ReferencedContainer = "container:twitstocker.xcodeproj">
+               BuildableName = "TwitStocker.app"
+               BlueprintName = "TwitStocker"
+               ReferencedContainer = "container:TwitStocker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "009D1E411A4F9EE5007C28C7"
-               BuildableName = "twitstockerTests.xctest"
-               BlueprintName = "twitstockerTests"
-               ReferencedContainer = "container:twitstocker.xcodeproj">
+               BuildableName = "TwitStocker.xctest"
+               BlueprintName = "TwitStocker"
+               ReferencedContainer = "container:TwitStocker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "009D1E411A4F9EE5007C28C7"
-               BuildableName = "twitstockerTests.xctest"
-               BlueprintName = "twitstockerTests"
-               ReferencedContainer = "container:twitstocker.xcodeproj">
+               BuildableName = "TwitStocker.xctest"
+               BlueprintName = "TwitStocker"
+               ReferencedContainer = "container:TwitStocker.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "009D1E2A1A4F9EE4007C28C7"
-            BuildableName = "twitstocker.app"
-            BlueprintName = "twitstocker"
-            ReferencedContainer = "container:twitstocker.xcodeproj">
+            BuildableName = "TwitStocker.app"
+            BlueprintName = "TwitStocker"
+            ReferencedContainer = "container:TwitStocker.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "009D1E2A1A4F9EE4007C28C7"
-            BuildableName = "twitstocker.app"
-            BlueprintName = "twitstocker"
-            ReferencedContainer = "container:twitstocker.xcodeproj">
+            BuildableName = "TwitStocker.app"
+            BlueprintName = "TwitStocker"
+            ReferencedContainer = "container:TwitStocker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "009D1E2A1A4F9EE4007C28C7"
-            BuildableName = "twitstocker.app"
-            BlueprintName = "twitstocker"
-            ReferencedContainer = "container:twitstocker.xcodeproj">
+            BuildableName = "TwitStocker.app"
+            BlueprintName = "TwitStocker"
+            ReferencedContainer = "container:TwitStocker.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
@@ -107,6 +107,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
+      customArchiveName = "TwitStocker"
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

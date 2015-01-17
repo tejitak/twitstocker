@@ -68,9 +68,9 @@ class LoginViewController: UIViewController {
                 UIApplication.sharedApplication().keyWindow?.rootViewController = MainTabViewController()
             } else {
                 // show an error
-                self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
-                self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_close", comment: ""), style: .Cancel, handler: nil))
-                self.presentViewController(self.alert!, animated: true, completion: nil)
+//                self.alert = UIAlertController(title: error.localizedDescription, message: nil, preferredStyle: .Alert)
+//                self.alert!.addAction(UIAlertAction(title: NSLocalizedString("common_close", comment: ""), style: .Cancel, handler: nil))
+//                self.presentViewController(self.alert!, animated: true, completion: nil)
             }
         })
         logInButton.frame = CGRectMake(0, self.view.frame.maxY - twBtnH, width, twBtnH)
