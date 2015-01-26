@@ -25,7 +25,12 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        var smallScreenAdjustment: CGFloat = 0.0
+        let size = self.view.bounds.size
+        if size.height <= 480 {
+            smallScreenAdjustment = 48.0
+        }
         let width = self.view.frame.maxX, height = self.view.frame.maxY
         self.view.backgroundColor = Constants.Theme.concept()
         scrollView = UIScrollView(frame: self.view.frame)
@@ -40,7 +45,7 @@ class LoginViewController: UIViewController {
             // show title message
             let x = CGFloat(i) * width
 //            let introTitle:UILabel = UILabel(frame: CGRectMake(x, height - titleH - imageH - twBtnH - paddingTop, width, titleH))
-            let margin = height - imageH - twBtnH - paddingTop * 2 - controlH
+            let margin = height - imageH - twBtnH - paddingTop * 2 - controlH + smallScreenAdjustment
             let introTitle:UILabel = UILabel(frame: CGRectMake(x + 10, paddingTop * 2 + controlH + (margin - titleH) / 2, width - 20, titleH))
             introTitle.textColor = UIColor.whiteColor()
             introTitle.textAlignment = NSTextAlignment.Center
@@ -50,7 +55,7 @@ class LoginViewController: UIViewController {
             scrollView.addSubview(introTitle)
             // show image
             let diffW = (width - imageW) / 2
-            let imageView: UIImageView = UIImageView(frame: CGRectMake(x + diffW, height - imageH - twBtnH, imageW, imageH))
+            let imageView: UIImageView = UIImageView(frame: CGRectMake(x + diffW, height - imageH + smallScreenAdjustment - twBtnH, imageW, imageH))
             let image = UIImage(named: NSLocalizedString("tutorial_image_" + String(i + 1), comment: ""))
             imageView.image = image
             scrollView.addSubview(imageView)
