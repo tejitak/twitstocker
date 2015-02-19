@@ -10,6 +10,8 @@
 		001AAF6E1A4FE466004EB54E /* MainTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001AAF6D1A4FE466004EB54E /* MainTabViewController.swift */; };
 		001AAF701A4FF4FE004EB54E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */; };
 		001F35C01A638F3F002BC237 /* HRToast+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 001F35BF1A638F3F002BC237 /* HRToast+UIView.swift */; };
+		0030A2C71A93839D009092AD /* MoPub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0030A2C51A93839D009092AD /* MoPub.framework */; };
+		0030A2C81A93839D009092AD /* MoPub.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0030A2C61A93839D009092AD /* MoPub.bundle */; };
 		0037CD101A62855B0089EA42 /* twitstocker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0037CD0E1A62855B0089EA42 /* twitstocker.xcdatamodeld */; };
 		0037CD121A629CC40089EA42 /* ReadStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0037CD111A629CC40089EA42 /* ReadStore.swift */; };
 		005678591A657A1A004F5B62 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005678581A657A1A004F5B62 /* Constants.swift */; };
@@ -50,6 +52,8 @@
 		001F35BF1A638F3F002BC237 /* HRToast+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "HRToast+UIView.swift"; path = "twitstocker/lib/HRToast+UIView.swift"; sourceTree = SOURCE_ROOT; };
 		002853891A67EC5700E40856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0028538A1A68023400E40856 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		0030A2C51A93839D009092AD /* MoPub.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MoPub.framework; sourceTree = "<group>"; };
+		0030A2C61A93839D009092AD /* MoPub.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = MoPub.bundle; path = MoPub.framework/Versions/A/Resources/MoPub.bundle; sourceTree = "<group>"; };
 		0037CD0F1A62855B0089EA42 /* twitstocker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = twitstocker.xcdatamodel; sourceTree = "<group>"; };
 		0037CD111A629CC40089EA42 /* ReadStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadStore.swift; sourceTree = "<group>"; };
 		005678581A657A1A004F5B62 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -84,6 +88,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				009D1E561A4FA182007C28C7 /* TwitterKit.framework in Frameworks */,
+				0030A2C71A93839D009092AD /* MoPub.framework in Frameworks */,
 				009D1E581A4FA182007C28C7 /* Fabric.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -110,6 +115,8 @@
 		009D1E221A4F9EE4007C28C7 = {
 			isa = PBXGroup;
 			children = (
+				0030A2C51A93839D009092AD /* MoPub.framework */,
+				0030A2C61A93839D009092AD /* MoPub.bundle */,
 				001AAF6F1A4FF4FE004EB54E /* Default-568h@2x.png */,
 				009D1E531A4FA182007C28C7 /* TwitterKit.framework */,
 				009D1E541A4FA182007C28C7 /* TwitterKitResources.bundle */,
@@ -269,6 +276,7 @@
 				00B375CD1A6897AB00A86E1F /* LaunchScreen.xib in Resources */,
 				009D1E571A4FA182007C28C7 /* TwitterKitResources.bundle in Resources */,
 				FBD52CE61A6685C00010B6DC /* Localizable.strings in Resources */,
+				0030A2C81A93839D009092AD /* MoPub.bundle in Resources */,
 				001AAF701A4FF4FE004EB54E /* Default-568h@2x.png in Resources */,
 				009D1E3A1A4F9EE5007C28C7 /* Images.xcassets in Resources */,
 			);

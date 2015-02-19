@@ -13,7 +13,7 @@ class Constants {
     
     struct Product {
         static func version() -> String {
-            return "1.1"
+            return "1.2"
         }
     }
     

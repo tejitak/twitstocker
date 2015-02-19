@@ -8,6 +8,7 @@
 
 import UIKit
 import Fabric
+import MoPub
 import TwitterKit
 
 @UIApplicationMain
@@ -18,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // load Twitter framework
-        Fabric.with([Twitter()])
+        Fabric.with([Twitter(), MoPub()])
         
         // Override point for customization after application launch.
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
@@ -28,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }else{
             self.window?.rootViewController = LoginViewController()
         }
+        self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.makeKeyAndVisible()
         
         UINavigationBar.appearance().barTintColor = Constants.Theme.concept()

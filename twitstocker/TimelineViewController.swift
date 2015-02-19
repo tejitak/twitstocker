@@ -23,15 +23,14 @@ class TimelineViewController: BaseTweetViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        self.updateTitle()
-        
         prototypeCell = TWTRTweetTableViewCell(style: .Default, reuseIdentifier: "cell")
-        
-        tableView.registerClass(StockedTweetTableViewCell.self, forCellReuseIdentifier: "cell")
-        self.view.addSubview(tableView)
         
         // load first page
         refresh()
+    }
+    
+    override func registerTableClass() -> UITableViewCell.Type {
+        return StockedTweetTableViewCell.self
     }
     
     override func refresh() {

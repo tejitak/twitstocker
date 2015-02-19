@@ -22,10 +22,11 @@ class FavoriteViewController: BaseTweetViewController {
         
         prototypeCell = TWTRTweetTableViewCell(style: .Default, reuseIdentifier: "cell")
         
-        tableView.registerClass(FavoriteTableViewCell.self, forCellReuseIdentifier: "cell")
-        self.view.addSubview(tableView)
-
         refresh()
+    }
+    
+    override func registerTableClass() -> UITableViewCell.Type {
+        return FavoriteTableViewCell.self
     }
         
     override func loadMore(cb: ()->(), errcb: () -> ()) {
